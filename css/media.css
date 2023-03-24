@@ -1,0 +1,76 @@
+@media (max-width:1200px) {
+    :root{
+        font-size: 50%;
+    }
+}
+@media (max-width:960px) {
+    :root{
+        font-size: 38%;
+    }
+}
+@media (max-width:720px) {
+    :root{
+        font-size: 28%;
+    }
+    header {
+        min-height:50px;
+        max-height:50px;
+        position: relative;
+    }
+}
+@media (max-width:520px) {
+:root{
+    font-size: 20%;
+}
+
+.nav-container{
+    position: absolute;
+    top: 15px;
+    right: 50%;
+    transform: translate(50%);
+    width:32rem;
+    /* ! TEST Animation */
+    width:10rem;
+    animation: scale-w 1.2s forwards ;
+}
+header nav{
+    border-radius: 12px;
+    max-height:fit-content;
+    padding: 0;
+}
+header nav ul{
+    flex-wrap: wrap;
+    padding: 1.5rem  ;
+    animation: scale-h .5s forwards .6s;
+}
+header nav ul li{
+/* padding: 1.2rem ; */
+line-height: 30px;
+text-align: center;
+width: 50%; 
+font-size: 2.8rem;
+font-weight: bolder;
+/* ! Animaition */
+display: none;
+
+}}
+@keyframes scale-w {
+60%{
+    width: 15rem;
+}
+100%{
+    width: 32rem;
+}
+    
+}
+@keyframes scale-h {
+    0%{
+        height: 0;
+    }
+100%{
+height: 25rem;
+}
+
+    
+}
+

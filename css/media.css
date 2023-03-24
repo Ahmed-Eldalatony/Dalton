@@ -53,7 +53,13 @@ font-weight: bolder;
 /* ! Animaition */
 display: none;
 
-}}
+}
+
+li:hover{
+    font-size:3rem;
+    transition: .2s;
+}
+}
 @keyframes scale-w {
 60%{
     width: 15rem;

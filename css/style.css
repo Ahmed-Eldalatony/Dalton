@@ -11,7 +11,7 @@ font-size: 62.5%;
 /* * Colors */
 --primary-color:#4fc2f7e0 ;
 --secondary-color:#18b3ded7 ;
---background-color:#000C14 ; 
+--background-color:rgb(2, 14, 25) ; 
 --txt-h-color:#e2e2e2;
 --secondary-color-2: rgb(12, 22, 37);
 
@@ -36,13 +36,14 @@ a{
 }
 body{
     font-size: 1.6rem;
-    color: white;
-    background-color: #000C14;
+    color: #eee;
+    background-color: var(--background-color);
     font-family:var(--inter);
+    scroll-behavior: smooth;
 }
 /*! Styling */
 .loading-sc{
-    background-color: #000C14;
+    background-color: var(--background-color);
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -118,18 +119,15 @@ header .logo{
 }
 header nav{
     width: 100%;
-    background-image: linear-gradient(145deg,rgba(255, 255, 255,.3) ,rgba(255, 255, 255,.2));
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(100px);
     border-radius: 100px;
     padding: 0 2rem;
-    max-height: 4.2rem;
+    max-height: 4rem;
    
 }
 
 .glass-f{
 background-color: transparent;
-background-image: linear-gradient(145deg,rgba(255, 255, 255,.3) ,rgba(255, 255, 255,.2));
+background-image: linear-gradient(145deg,rgba(255, 255, 255,.22) ,rgba(255, 255, 255,.1));
 backdrop-filter: blur(100px);
 -webkit-backdrop-filter: blur(100px);
 border: solid var(--primary-color) 1px;
@@ -142,7 +140,7 @@ border: solid var(--primary-color) 1px;
     position:absolute;
     right: 50%;
     transform: translate(50%);
-    border-radius: 100px;
+    border-radius: 4rem;
   box-shadow: 0 0px 1.5rem var(--primary-color);
 }
 
@@ -208,9 +206,7 @@ display:inline-block;
     font-size: var(--fs-200);
     color: #bebebe;
 }
-.introduction .sudo{
 
-}
 .btn-cont{
     width: fit-content;
 }
@@ -330,16 +326,19 @@ font-size: var(--fs-600);
     display: grid;
     grid-template-columns: repeat(2,1fr);
     justify-items: center;
-    gap: 3rem;
+    gap: 2rem;
+    width: 60rem;
+    margin: 0 auto;
+
 }
 #hire-me input{
-    font-size: var(--fs-300);
-    padding: 1.8rem;
+    font-size: var(--fs-100);
+    padding: 2rem;
     border-radius: 100px;
-    color:white ;
+    color:#ddd;
 }
 #hire-me input::placeholder{
-    color: white;
+    color: #ddd;
 }
 #hire-me input:focus{
     outline: transparent;
@@ -348,8 +347,12 @@ font-size: var(--fs-600);
 
 #hire-me input:nth-child(5){
     grid-column: span 2;
-    width: 90%;
+    width: 100%;
+    min-height: 30rem;
     margin: 0 auto;
+    border-radius: 4rem;
+    padding-bottom: 21rem;
+    padding-left: 3rem;
 }
 #hire-me  .btn-cont{
     margin-top: 3rem;

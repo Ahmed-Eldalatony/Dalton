@@ -141,7 +141,7 @@ border: solid var(--primary-color) 1px;
     right: 50%;
     transform: translate(50%);
     border-radius: 4rem;
-  box-shadow: 0 0px 1.5rem var(--primary-color);
+  box-shadow: 0 0px 1.2rem var(--primary-color);
 }
 
 header nav ul{
@@ -181,7 +181,7 @@ border-radius: 100vw;
 
 /** Landing Section */
 .introduction{
-    margin: 7rem auto 0 4rem;
+    margin: 3rem auto 0 4rem;
     width: 70%;
 }
 .introduction .hello{
@@ -226,9 +226,9 @@ display:inline-block;
     width: 28%;
     height: fit-content;
     align-self: center;
-    transform: translate(3.5rem,-2rem);
-    border: solid;
+    transform: translate(3.5rem,-10rem);
     border-radius: 50%;
+    border: solid ;
 }
 #projects{
     margin-top: 50px;
@@ -318,7 +318,7 @@ font-size: var(--fs-600);
     padding: 0;
 }
 #hire-me{
-    margin-top: 15rem;
+    /* margin-top: 15rem; */
     padding: 15rem;
     display: relative;
 }

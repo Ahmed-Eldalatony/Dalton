@@ -10,12 +10,16 @@
 }
 @media (max-width:720px) {
     :root{
-        font-size: 28%;
+        font-size: 30%;
     }
     header {
         min-height:50px;
         max-height:50px;
         position: relative;
+    }
+    .container{
+        /* width: 95%; */
+        /* padding: 0; */
     }
 }
 @media (max-width:520px) {

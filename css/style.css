@@ -13,7 +13,9 @@ font-size: 62.5%;
 --secondary-color:#18b3ded7 ;
 --background-color:rgb(2, 14, 25) ; 
 --txt-h-color:#e2e2e2;
+--small-txt:#bebebe;
 --secondary-color-2: rgb(12, 22, 37);
+
 
 /* --glass- */
 /** Font Families */
@@ -47,11 +49,9 @@ body{
     width: 100vw;
     height: 100vh;
     position: absolute;
-    z-index: 10;
+    z-index: 9999;
     display: block;
-    animation: loadingSc 1.5s forwards;
-    z-index: 100;
-
+    animation: loadingSc 1.2s forwards;
 }
 @keyframes loadingSc {
     0%{
@@ -82,6 +82,7 @@ z-index: -1;
     transform: translate(-50%);
     box-shadow: 0px 0px 0px var(--primary-color);
     animation: loading 1.2s forwards;
+    
 }
 
 @keyframes loading {
@@ -100,13 +101,17 @@ z-index: -1;
 }
 header{
     display: flex;
-    min-height: 13rem;
-    max-height: 13rem;
+    min-height: 9rem;
+    max-height: 9rem;
     justify-content: space-between;
     width: 90%;
     margin: 0 auto;
     align-items: center;
     padding: 0 5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--background-color);
 }
 header .logo{
     font-size: var(--fs-400);
@@ -119,17 +124,17 @@ header .logo{
 }
 header nav{
     width: 100%;
-    border-radius: 100px;
     padding: 0 2rem;
-    max-height: 4rem;
+    max-height: 5rem;
    
 }
 
 .glass-f{
 background-color: transparent;
 background-image: linear-gradient(145deg,rgba(255, 255, 255,.22) ,rgba(255, 255, 255,.1));
-backdrop-filter: blur(100px);
--webkit-backdrop-filter: blur(100px);
+/* backdrop-filter: blur(100px);
+-webkit-backdrop-filter: blur(100px); */
+border-radius: 50px;
 border: solid var(--primary-color) 1px;
 }
 .light-on{
@@ -141,12 +146,14 @@ border: solid var(--primary-color) 1px;
     right: 50%;
     transform: translate(50%);
     border-radius: 4rem;
-  box-shadow: 0 0px 1.2rem var(--primary-color);
+    box-shadow: 0 0px 1.2rem var(--primary-color);
+    opacity: .9;
 }
 
 header nav ul{
     position: relative;
     display: flex; 
+    padding: .3rem;
     justify-content: space-between;
 
 
@@ -154,30 +161,51 @@ header nav ul{
 }
 header nav ul li {
     font-size:var(--fs-100);
-    padding: .8rem;
+    padding: .5rem 1rem;
 
 }
 .mode{
     /* display: inline-block; */
-  /* border-radius: 100vw; */
-    box-shadow: 2px 2px 3rem var(--primary-color);
+  border-radius: 100vw;
+  position: relative;
 }
 li:hover{
-    font-size:2rem;
-    transition: .2s;
+    border-radius: 100vw;
+
+    /* ? in hover of the nav the sudo element will turn a little bit off and the li will have the sudo color of light on    */
+
 }
-.mode.glass-f{
+header :hover .light-on{
+    opacity: .75;
+}
+
+
+.btn-cont:hover .light-on{
+    opacity: .75;
+    
+}
+header li:hover {
+    background-color:#5acbffa4;  
+    box-shadow: 0 0 1rem var(--primary-color) ;
+}
+
+header:hover .mode .light-on{
+    opacity: .9;
+}
+.mode .glass-f{
     border: none;
-border-radius: 100vw;
     background: transparent;
 }
+
+
 .mode i{
     font-size:3.2rem;
+    position: relative;
 }
+
 .btn-cont{
     position:relative
 }
-
 
 /** Landing Section */
 .introduction{
@@ -202,9 +230,17 @@ display:inline-block;
 }
 .introduction p{
     margin:  3rem 0 ;
-    width: 30ch;
+    width: 35ch;
     font-size: var(--fs-200);
-    color: #bebebe;
+    color: var(--small-txt);
+    line-height: 1.5;
+}
+.introduction .shine{
+    font-size: 2.4rem;
+    font-weight:600;
+    color: #41b7ee;
+    text-shadow: 0px 0px 3px var(--primary-color);
+
 }
 
 .btn-cont{
@@ -226,7 +262,7 @@ display:inline-block;
     width: 28%;
     height: fit-content;
     align-self: center;
-    transform: translate(3.5rem,-10rem);
+    transform: translate(3.5rem,-5rem);
     border-radius: 50%;
     border: solid ;
 }
@@ -236,16 +272,18 @@ display:inline-block;
 .primary-header{
     font-size: var(--fs-600);
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     display: block;
     text-align: center;
+    margin-bottom: 2rem;
 }
 .secondary-header {
-    font-size: var(--fs-300);
-    font-weight: 600;
+    font-size: var(--fs-200);
+    font-weight: 500;
     text-align: center;
-    margin: 6rem 0;
-    letter-spacing: 3px;
+    margin-bottom: 8rem ;
+    letter-spacing: 1px;
+    color:var(--small-txt) ;
 }
 #projects .projects-cont{
     display: flex;
@@ -342,7 +380,7 @@ font-size: var(--fs-600);
 }
 #hire-me input:focus{
     outline: transparent;
-    box-shadow: 0 0px 1.5rem var(--primary-color);
+    box-shadow: 0 0 1.5rem var(--primary-color);
 }
 
 #hire-me input:nth-child(5){
@@ -390,4 +428,8 @@ footer .fiverr{
 footer img{
     width: 3rem;
 
+}
+.wrapper,
+footer{
+    display:  none;
 }

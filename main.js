@@ -12,10 +12,10 @@ mode.addEventListener("click",function(){
     
         glassF.forEach(ele=>{
             if(el.classList.contains("light-on")){
-                ele.style.boxShadow="0 0px 1.5rem var(--primary-color)"
+                ele.style.boxShadow="0 0px 1.5rem var(--primary-color);"
             }
         else{
-            ele.style.boxShadow="0 0 0 0 "
+            ele.style.boxShadow="0 0 0 0 ;"
             // navContainer.style.boxShadow="0 0 0 0"
     
             }
@@ -32,6 +32,14 @@ setTimeout(() => {
 let loadingSc= document.querySelector(".loading-s")
 let loadingItem= document.querySelector(".loading-i")
 
+
+let footer= document.querySelector("footer") 
+let wrapper= document.querySelector(".wrapper")
+
+setTimeout(() => {
+    
+   wrapper.style.display="block"
+},1200)
 
 
 

@@ -24,10 +24,11 @@
 }
 @media (max-width:520px) {
 :root{
-    font-size: 20%;
+    font-size: 18%;
 }
 
 .nav-container{
+    border-radius: 15px;
     position: absolute;
     top: 15px;
     right: 50%;
@@ -38,7 +39,7 @@
     animation: scale-w 1.2s forwards ;
 }
 header nav{
-    border-radius: 12px;
+    /* border-radius: 12px; */
     max-height:fit-content;
     padding: 0;
 }
@@ -60,7 +61,6 @@ display: none;
 }
 
 li:hover{
-    font-size:3rem;
     transition: .2s;
 }
 }

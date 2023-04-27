@@ -104,10 +104,14 @@ header{
     min-height: 9rem;
     max-height: 9rem;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     align-items: center;
     padding: 0 5rem;
+
+
+}
+.header-cont{
     position: sticky;
     top: 0;
     z-index: 100;
@@ -150,7 +154,11 @@ border: solid var(--primary-color) 1px;
     opacity: .9;
 }
 
-header nav ul{
+
+
+
+
+nav ul{
     position: relative;
     display: flex; 
     padding: .3rem;
@@ -429,7 +437,6 @@ footer img{
     width: 3rem;
 
 }
-.wrapper,
 footer{
-    display:  none;
+
 }

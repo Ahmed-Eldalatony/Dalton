@@ -2,12 +2,32 @@
     :root{
         font-size: 50%;
     }
+    .project img{
+        width: 100%;
+        object-fit: cover;
+        min-height: 35rem;
+        max-height: 35rem;
+    }
 }
+
 @media (max-width:960px) {
     :root{
         font-size: 38%;
     }
+    .project{
+        /* min-height: 100rem; */
+    }
+    .project img{
+        width: 100%;
+        object-fit: cover;
+        min-height: 62rem;
+        max-height: 62rem;
+    }
+    #projects .projects-cont{
+        padding: 5rem 10rem;
+    }
 }
+
 @media (max-width:720px) {
     :root{
         font-size: 30%;
@@ -22,11 +42,37 @@
         /* width: 95%; */
         /* padding: 0; */
     }
+    #projects .projects-cont{
+        padding: 7rem ;
+    }
+    
+    
+}
+@media (max-width:620px) {
+    :root{
+        font-size: 17%;
+    }
+    #projects .projects-cont{
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+        gap: 3rem;
+        /* justify-items: center; */
+    }
+    
 }
 @media (max-width:520px) {
 :root{
-    font-size: 18%;
+    font-size: 13%;
 }
+.header-cont{
+    position: static;
+
+}
+#projects .projects-cont{
+    padding: 0rem ;
+}
+
 
 .nav-container{
     border-radius: 15px;
@@ -39,6 +85,7 @@
     width:10rem;
     animation: scale-w 1.2s forwards ;
 }
+
 header nav{
     /* border-radius: 12px; */
     max-height:fit-content;

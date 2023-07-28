@@ -178,7 +178,6 @@ header nav ul li {
 }
 li:hover{
     border-radius: 100vw;
-
     /* ? in hover of the nav the sudo element will turn a little bit off and the li will have the sudo color of light on    */
 
 }
@@ -273,7 +272,7 @@ display:inline-block;
 
 #about .my-photo{
     width: 28%;
-    height: fit-content;
+    /* height: fit-content; */
     align-self: center;
     transform: translate(3.5rem,-5rem);
     border-radius: 50%;
@@ -311,6 +310,30 @@ display:inline-block;
     overflow: hidden;
     border-radius: 1.7rem;
 }
+.bouncer{
+    position: relative;
+}
+.bouncer::before{
+content:"Under Development";
+background-color: rgb(12, 155, 12);
+position: absolute;
+padding: .4rem 1rem;
+border-radius: 10rem;
+top:1rem;
+left:1rem; 
+}
+.bouncer::after{
+    content: "⭐";
+    background: rgba(251, 255, 10, 0.5);
+    padding: 1.3rem;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    position: absolute; 
+    border-radius: 5rem;
+    top: 1rem;
+    right: 1rem;
+    
+}
 .project .tools{
     display: flex;
     gap: 1.5rem;
@@ -318,7 +341,7 @@ display:inline-block;
 .project .tools span {
 text-decoration: underline;
 text-underline-offset: 2px;
-text-decoration-thickness: 2px;
+text-decoration-thickness: .2rem;
 padding: .5rem 1rem;
 border-radius: 100vw;
 }
@@ -385,7 +408,7 @@ background-color:rgba(255, 77, 77, 0.85);
     width: 8rem;
     }
     .bootstrap{
-        height: 6rem !important;
+       width: 7rem !important;
     }
 .skills-cont .par{
     margin-right: 3rem;
@@ -401,20 +424,54 @@ display: block;
 .skills i{
 font-size: var(--fs-600);
 }
+.skills li{
+    position: relative;
 
-.skills i:first-child{
+}
+.skills li:first-child i{
     color: #f79220;
 }
-.skills i:first-child:hover{
+.skills li:first-child:hover{
 /* box-shadow: 5px 5px 20px #f79220 inset ; */
 /* border-radius: 50%; */
 }
-.skills i:nth-child(2){
+.skills li:nth-child(2) i{
     color: #41b7ee;
 }
-.skills i:nth-child(3){
+.skills li:nth-child(3) i{
     color: #eee241;
 }
+.skills li:hover ul{
+    display: block;
+    background-color: #41b7ee;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 2.5rem #70c6ff67;
+    position: absolute;
+    width: 30rem;
+   top: 3rem; 
+   left: 2rem;
+   z-index: 3;
+   
+}
+.skills li ul{
+    display: none;
+    animation: scaleH 500ms forwards;
+}
+@keyframes scaleH {
+    
+    0%{height: 4rem;}
+    100%{
+        height: 20rem;
+    }
+}
+.project > *:not(a){
+    padding: 3rem;
+}
+
+
+
 #more{
     margin-top: 15rem;
     padding: 0;

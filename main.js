@@ -37,9 +37,49 @@ let footer= document.querySelector("footer")
 let wrapper= document.querySelector(".wrapper")
 
 setTimeout(() => {
-    
    wrapper.style.display="block"
-},1200)
+},850)
 
 
+// ! Skills 
+const skillList = document.querySelectorAll(".skills > li")
+const hover = document.querySelector(".pointer")
+skillList.forEach((skill)=>{
+    skill.addEventListener("mouseover",()=>{
+        hover.style.display="none"
+    })
+})
+        console.log(skillList)
+    //  hover.style.display="none"   
 
+
+//  function sendEmail (){
+//     console.log("it works")
+//     var params={
+//     from_name: document.getElementById("fullName").value,
+//     message: document.getElementById("message").value,
+//     email_id: document.getElementById("email").value
+//         }
+//         emailjs.send("service_e9dlam5","template_x6zsbs9",params).then(()=> alert("Send Successfully"))
+//     }
+const header= document.querySelector(".header-cont")    
+const navCont= document.querySelector(".nav-container")    
+const navUl= document.querySelector(".nav-container ul")    
+
+ window.onscroll=(e)=>{
+if (window.scrollY>=100){
+    header.style.width= "50rem" 
+    navCont.style.width= "15rem" 
+    navUl.style.display= "none" 
+    
+} 
+else{
+    header.style.width="85%";
+    navCont.style.width= "50rem" 
+    navUl.style.display= "flex" 
+    
+}
+
+// header.style.display= "none"
+
+}

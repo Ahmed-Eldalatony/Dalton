@@ -443,13 +443,13 @@ background-color:rgba(255, 77, 77, 0.85);
     width: max-content;
 
 }
-#about img{
-    width: 8rem;
+#about i{
+    font-size: 7rem;
     }
     .comp img,
-    .other img
+    .other 
     {
-        width: 11rem !important;
+        width: 12rem !important;
         padding-top: 1rem;
     }
     
@@ -469,7 +469,7 @@ display: block;
     margin-bottom: 1rem;
 }
 .skills .react{
-    width: 6.5rem !important;
+    width: 7.6rem !important;
 }
 .skills .react-sp{
 position: relative;
@@ -499,6 +499,9 @@ animation: upDown .4s infinite ;
 .skills  ul{
 flex-direction: column;
 gap: 1.5rem;
+}
+.skills li:last-child img{
+    width: 8rem !important;
 }
 .skills i{
 font-size: var(--fs-600);

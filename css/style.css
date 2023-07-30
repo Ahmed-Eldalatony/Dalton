@@ -37,7 +37,7 @@ a{
     text-decoration: none;
 }
 body{
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     color: #eee;
     background-color: var(--background-color);
     font-family:var(--inter);
@@ -563,13 +563,12 @@ font-size: var(--fs-600);
     padding: 0;
 }
 #hire-me{
-    /* margin-top: 15rem; */
-    padding: 15rem;
+  
     display: relative;
 }
 #hire-me form {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    /* grid-template-columns: repeat(2,1fr); */
     justify-items: center;
     gap: 2rem;
     width: 60rem;
@@ -581,6 +580,7 @@ font-size: var(--fs-600);
     padding: 2rem;
     border-radius: 100px;
     color:#ddd;
+    column-span: 1;
 }
 #hire-me input::placeholder{
     color: #ddd;

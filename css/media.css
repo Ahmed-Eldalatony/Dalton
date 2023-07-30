@@ -34,6 +34,9 @@
     :root{
         font-size: 34%;
     }
+    body{
+        font-size: 1.9rem;
+    }
     header {
         min-height:50px;
         max-height:50px;

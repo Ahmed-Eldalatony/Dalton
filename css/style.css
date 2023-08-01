@@ -563,7 +563,7 @@ font-size: var(--fs-600);
     padding: 0;
 }
 #hire-me{
-  
+  margin:10rem 0 ;
     display: relative;
 }
 #hire-me form {

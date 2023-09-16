@@ -1,0 +1,191 @@
+@media (max-width:1300px) {
+    :root{
+        font-size: 50%;
+    }
+    .project img{
+        width: 100%;
+        object-fit: cover;
+        min-height: 22em;
+        max-height: 22em;
+    }
+    
+    .container{
+        width: 1150px;
+    }
+}
+
+@media (max-width:1100px) {
+    :root{
+        font-size: 50%;
+        -webkit-text-size-adjust: none;
+    }
+   .container{
+    width: 900px;
+    padding: 0 1em;
+   } 
+    
+    .project img{
+        width: 100%;
+        object-fit: cover;
+        min-height: 20em;
+        max-height: 20em;
+    }
+    #projects .projects-cont{
+        padding: 5rem 10rem;
+    }
+}
+
+@media (max-width:900px) {
+    :root{
+        font-size: 40%;
+    }
+    body{
+        font-size: 1.9rem;
+    }
+    header {
+    min-height:50px;
+    max-height:50px;
+    position: relative;
+    }
+    .container{
+        width: 750px;
+    }
+    #projects .projects-cont{
+    padding: 0rem ;
+    }
+#hire-me form input {
+grid-column: span 2;
+width: 100%;
+padding: 2.5rem 3.5rem;
+}
+.skills .comp{
+        width: 5.5em;
+    }
+    .react-icon{
+        width: 3.9em;
+    }
+    .firebase{
+        width:3.5em;
+    }
+}
+
+@media (max-width:720px) {
+:root{
+    font-size: 34%;
+}
+    .testimonial p{
+ font-size: 1.8rem; 
+}
+.container{
+    width: 550px;
+}
+
+.project img{
+    min-height: 34em;
+    max-height: 34em;
+}
+#about{
+    margin-top: 3em;
+}
+.header-cont{
+    top: 4em;
+}
+.nav-container{
+    border-radius: 1.5em;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%);
+    animation: scale-w 1.2s forwards ;
+}
+header .nav-container{
+    width: 18em ;
+}
+
+.nav-container .light-on{
+    border-radius: 1.5em;
+}
+header:hover .nav-container{
+    width: 18em !important;
+}
+
+header nav{
+    border-radius: 50px !important;
+    max-height:fit-content;
+    padding: 0;
+}
+header nav ul{
+    flex-wrap: wrap;
+    padding: 1rem  ;
+    animation: scale-h .5s forwards .6s;
+    align-items: center;
+}
+header nav ul li{
+padding:.6em 0;
+text-align: center;
+width: 50%; 
+font-size: 2.8rem;
+font-weight: bolder;
+/* ! Animaition */
+
+}
+
+li:hover{
+    transition: .2s;
+}
+}
+
+
+@media (max-width:550px) {
+:root{
+    /* font-size: %; */
+}
+.testimonial {
+   width: 95%; 
+}
+#hire-me form {
+    width: 80%;
+}
+#projects .projects-cont{
+    grid-template-columns: repeat( auto-fit, minmax(230px, 1fr) );
+}
+.container{
+    width: 420px;
+}
+.skills .comp{
+    display: none;
+}.firebase{
+    margin-left: -1em;
+}
+.skills-cont .skills{
+    gap: .7em;
+}
+.project img{
+    min-height: 25em;
+    max-height: 25em;
+    }
+}
+@media (max-width:400px) {
+:root{
+    font-size: 28%;
+}
+.container {
+    width: 300px;
+}
+.introduction h1,h2{
+    font-size: var(--fs-500);
+}
+
+.testimonial img{
+   width: 9em; 
+}
+ .testimonial p{
+width: 32ch ;    
+}
+
+ 
+#projects .projects-cont{
+    grid-template-columns: repeat( auto-fit, minmax(230px, 1fr) );
+}
+
+
+}

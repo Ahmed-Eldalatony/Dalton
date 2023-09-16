@@ -49,7 +49,6 @@ skillList.forEach((skill)=>{
         hover.style.display="none"
     })
 })
-        console.log(skillList)
     //  hover.style.display="none"   
 
 
@@ -68,18 +67,29 @@ const navUl= document.querySelector(".nav-container ul")
 
  window.onscroll=(e)=>{
 if (window.scrollY>=100){
-    header.style.width= "50rem" 
-    navCont.style.width= "15rem" 
+    header.style.width= "26em" 
+    navCont.style.width= "8em" 
     navUl.style.display= "none" 
     
 } 
-else{
+else if(window.scrollY <=100){
     header.style.width="85%";
-    navCont.style.width= "50rem" 
+    navCont.style.width= "18em" 
     navUl.style.display= "flex" 
     
 }
+ if( window.scrollY <=100 && window.innerWidth >=720){
+    header.style.width="85%";
+    navCont.style.width= "32em" 
+    navUl.style.display= "flex" 
+}
 
-// header.style.display= "none"
+}
 
+
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+
+if (isSafari) {
+    window.alert("Currently Website is not working responsively on safari mobile ")
 }

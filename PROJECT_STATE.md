@@ -28,137 +28,675 @@ The content is organized as follows:
 ## Notes
 - Some files may have been excluded based on .gitignore rules and Repomix's configuration
 - Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
-- Files matching these patterns are excluded: cloudflare-env.d.ts, pnpm-yaml.json, .git/, .open-next/, migrations/, Notes/, imgs/, src/components/ui, src/components/smart-form.tsx, src/components/strength-meter.tsx, src/app/globals.css, package.json, repomix.config.json
+- Files matching these patterns are excluded: cloudflare-env.d.ts, pnpm-yaml.json, .git/, .open-next/, migrations/, Notes/, imgs/, src/components/ui, src/components/smart-form.tsx, src/components/strength-meter.tsx, src/app/globals.css, package.json, repomix.config.json, **.svg
 - Files matching patterns in .gitignore are excluded
 - Files matching default ignore patterns are excluded
 - Files are sorted by Git change count (files with more changes are at the bottom)
 
 # Directory Structure
 ```
-css/
-  media.css
-  style.css
-index.html
-main.js
-script.js
+src/
+  components/
+    About.svelte
+    Header.svelte
+    Projects.svelte
+    Testominial.svelte
+  css/
+    media.css
+    style.css
+  lib/
+    index.ts
+  routes/
+    +layout.svelte
+    +page.svelte
+  app.css
+  app.d.ts
+  app.html
+static/
+  robots.txt
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc
+eslint.config.js
+README.md
+svelte.config.js
+tsconfig.json
+vite.config.ts
 ```
 
 # Files
 
-## File: script.js
-```javascript
-function sendEmail (){
-    console.log("it works")
-    var params={
-    from_name: document.getElementById("fullName").value,
-    message: document.getElementById("message").value,
-    email_id: document.getElementById("email").value
+## File: src/components/About.svelte
+````
+<!-- src/components/About.svelte -->
+<script>
+    // Component logic can be added here if needed in the future
+</script>
+
+<section id="about">
+    <div class="introduction">
+        <span class="hello">Hello,</span>
+        <h1>Dalton Is Here!</h1>
+        <h2>Frontend Developer</h2>
+        <p>
+            Hi, I am <b>Ahmed Dalton</b> - a Freelancer working as a Frontend developer helping unique startups
+            <br />
+            and small projects to <span class="shine">Shine</span>.
+        </p>
+        <div class="btn-cont">
+            <!-- <span class="sudo" class:light-on={/* isLightOn prop or global state */}></span> -->
+            <a href="#hire-me" class="btn glass-f">Get in touch</a>
+        </div>
+    </div>
+    <img class="my-photo" src="/imgs/ahmed-dalton.png" alt="Ahmed-Dalton" />
+</section>
+
+<style>
+    /* Specific styles for the About section, copied from your style.css */
+    .introduction {
+        margin: 3rem auto 0 0rem;
+        width: 70%;
     }
- emailjs.send("service_e9dlam5","template_x6zsbs9",params).then(()=> alert("Send Successfully"))
-}
-```
+    .introduction .hello {
+        color: var(--primary-color);
+        font-size: var(--fs-400);
+        margin-bottom: 2rem;
+        display: inline-block;
+    }
+    .introduction h1,
+    .primary-header {
+        color: var(--txt-h-color);
+    }
+    .introduction h1,
+    h2 {
+        font-size: var(--fs-500);
+        font-weight: 700;
+    }
+    .introduction h2 {
+        color: #ccc;
+    }
+    .introduction p {
+        margin: 3rem 0;
+        width: 35ch;
+        font-size: var(--fs-200);
+        color: var(--small-txt);
+        line-height: 1.5;
+    }
+    .introduction .shine {
+        font-size: 2.4rem;
+        font-weight: 600;
+        color: #41b7ee;
+        text-shadow: 0px 0px 3px var(--primary-color);
+    }
+    .btn-cont {
+        position: relative;
+        width: fit-content;
+    }
+    .btn {
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-size: var(--fs-200);
+        color: white;
+        font-weight: 700;
+    }
+    #about {
+        display: flex;
+        padding: 12rem 2rem;
+    }
+    #about .my-photo {
+        width: 28%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        align-self: center;
+        transform: translate(0rem, -10rem);
+        border-radius: 50%;
+        border: solid;
+    }
+    .glass-f {
+        background-color: transparent;
+        background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1));
+        border-radius: 50px;
+        border: solid var(--primary-color) 1px;
+    }
+    .sudo {
+        /* Styles for the sudo element if used locally */
+        /* You might need to adjust this based on your exact effect */
+        /*
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        background-color: var(--primary-color); 
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+        */
+    }
+    .sudo.light-on {
+        /* Styles for the sudo element when active */
+        /*
+        opacity: 0.6; 
+        */
+    }
+    /* Ensure global variables are accessible */
+    :global(:root) {
+        --primary-color: #4fc2f7e0;
+        --secondary-color: #18b3ded7;
+        --background-color: rgb(1, 10, 22);
+        --txt-h-color: #d3d9dd;
+        --small-txt: #bebebe;
+        --fs-200: 2.2rem;
+        --fs-400: 3.6rem;
+        --fs-500: 5.6rem;
+        /* Add other necessary :root variables if needed */
+    }
+</style>
+````
 
-## File: main.js
-```javascript
-let mode = document.querySelector(".mode")
-let sudo=document.querySelectorAll(".sudo")
-// let dynamicIsland = document.querySelector(".nav-cobtn-contntainer")
-let glassF=document.querySelectorAll(".glass-f")
-let navContainer = document.querySelector(".nav-container nav")
-let btnCont = document.querySelector(".btn-cont .btn")
-let lis = document.querySelectorAll("header nav ul li")
-mode.addEventListener("click",function(){
-    console.log(mode)
-    sudo.forEach((el)=>{
-        el.classList.toggle("light-on")
+## File: src/components/Header.svelte
+````
+<script>
+  import { onMount, createEventDispatcher } from 'svelte';
+
+  export let isLightOn;
+  export let activeSection; 
+
+  // Svelte's way of sending events up to the parent component
+  const dispatch = createEventDispatcher();
+
+  const navItems = [
+    { label: 'About', href: '#about' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Testimonials', href: '#testimonials' },
+    { label: 'Hire me', href: '#hire-me' }
+  ];
+
+  let navLinkElements = []; 
+  let indicatorStyle = '';
+  let ready = false;
+
+  $: if (ready) {
+    const activeIndex = navItems.findIndex(item => item.href === `#${activeSection}`);
+    const activeEl = navLinkElements[activeIndex];
     
-        glassF.forEach(ele=>{
-            if(el.classList.contains("light-on")){
-                ele.style.boxShadow="0 0px 1.5rem var(--primary-color);"
-            }
-        else{
-            ele.style.boxShadow="0 0 0 0 ;"
-            // navContainer.style.boxShadow="0 0 0 0"
-    
-            }
-        })
-            // btnCont.style.boxShadow="0 0px 1.5rem var(--primary-color)"
-            //  navContainer.style.boxShadow="0 0px 1.5rem var(--primary-color)"
-    })
-})
+    if (activeEl) {
+      indicatorStyle = `
+        left: ${activeEl.offsetLeft}px;
+        width: ${activeEl.offsetWidth}px;
+      `;
+    }
+  }
+  
+  let headerCont;
+  let navCont;
+  let navUl;
+  
+  onMount(() => {
+    setTimeout(() => ready = true, 50);
 
-setTimeout(() => {
-    
-    lis.forEach(el=>el.style.display="block")
-},900)
-let loadingSc= document.querySelector(".loading-s")
-let loadingItem= document.querySelector(".loading-i")
+    window.onscroll = () => {
+      if (!headerCont || !navCont || !navUl) return;
+
+      const isScrolled = window.scrollY >= 100;
+      const isWideScreen = window.innerWidth >= 720;
+      
+      if (isScrolled) {
+        headerCont.style.width = "26em";
+        navCont.style.width = "8em";
+        navUl.style.display = "none"; 
+      } else {
+        headerCont.style.width = "85%";
+        navCont.style.width = isWideScreen ? "32em" : "18em";
+        navUl.style.display = "flex";
+        navUl.style.pointerEvents = "auto";
+      }
+    };
+  });
+</script>
+
+<div class="header-cont " bind:this={headerCont}>
+    <header class="">
+        <span class="logo">
+          <img src="/imgs/Group 3 (1).svg" alt="Dalton Logo">
+        </span>
+        <div class="nav-container glass-f" bind:this={navCont}>
+          <span class="sudo" class:light-on={isLightOn}></span>
+          <nav>
+            <ul bind:this={navUl}>
+              <li><a href="#about">About</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#hire-me">Hire me</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="mode" on:click={toggleTheme} on:keydown on:keypress role="button" tabindex="0">
+          <span class="sudo" class:light-on={isLightOn}></span>
+          <i class="fa-regular fa-lightbulb glass-f"></i>
+        </div>
+      </header>
+
+</div>
+````
+
+## File: src/components/Projects.svelte
+````
+<script>
+  import { onMount } from 'svelte';
+
+  const projects = [
+    {
+      title: 'FMT-C',
+      imageUrl: '/imgs/fmt-c.png',
+      link: 'https://fmt-c.com/ar',
+      description: 'A project for a real estate and construction company in the UAE.',
+      designer: 'Ahmed Dalton',
+      designerLink: '#about',
+      tools: [{ name: 'React JS', class: 'react' }, { name: 'Tailwind', class: 'tailwind' }],
+      category: ['favorite', 'full-stack']
+    },
+    {
+      title: 'Baddel',
+      imageUrl: '/imgs/baddel.png',
+      link: 'https://baddel.vercel.app/ar',
+      description: 'A project listing alternatives to boycotted products.',
+      designer: 'Ahmed Dalton',
+      designerLink: '#about',
+      tools: [{ name: 'React JS', class: 'react' }, { name: 'Tailwind', class: 'tailwind' }],
+      category: ['full-stack']
+    },
+    {
+      title: 'The Green Tree Initiative',
+      imageUrl: '/imgs/Screenshot-2024-02-11-at-18-56-39-The-Green-Tree-Intetiative.png',
+      link: 'https://green-tree-intiative.netlify.app/',
+      description: 'A concept for a non-profit helping people and the environment.',
+      designer: 'Ahmed Dalton',
+      designerLink: '#about',
+      tools: [{ name: 'React JS', class: 'react' }, { name: 'Tailwind', class: 'tailwind' }],
+      category: ['favorite', 'full-stack']
+    },
+    {
+      title: 'Bouncer',
+      imageUrl: '/imgs/Bouncer.png',
+      link: 'https://Bouncer.pages.dev/',
+      description: 'An eCommerce Website created with React and Tailwind.',
+      designer: 'Almaz Bisenbaev',
+      designerLink: 'https://almazbisenbaev.gumroad.com/',
+      tools: [{ name: 'React JS', class: 'react' }, { name: 'Tailwind', class: 'tailwind' }],
+      category: ['full-stack']
+    },
+    {
+      title: 'Sky Host',
+      imageUrl: '/imgs/Sky-Host.jpg',
+      link: 'https://sky-host.pages.dev/',
+      description: 'A hosting platform concept created with HTML, CSS, and JavaScript.',
+      designer: 'EuroART93',
+      designerLink: '#',
+      tools: [{ name: 'HTML5', class: 'html' }, { name: 'CSS3', class: 'css' }, { name: 'JavaScript', class: 'javascript' }],
+      category: ['static']
+    },
+    {
+      title: 'Khoomie',
+      imageUrl: '/imgs/Khoomie.png',
+      link: 'https://Khoomie.pages.dev/',
+      description: 'An eCommerce website concept.',
+      designer: 'Michael Ajah',
+      designerLink: 'https://dribbble.com/shots/15282101-Khoomi-Ecommerce-UI-Kit',
+      tools: [{ name: 'HTML5', class: 'html' }, { name: 'CSS3', class: 'css' }, { name: 'JavaScript', class: 'javascript' }],
+      category: ['static']
+    },
+    {
+      title: 'Marknet',
+      imageUrl: '/imgs/Marknet.png',
+      link: 'https://marknet.pages.dev/',
+      description: 'A marketing website concept.',
+      designer: 'Adel Ahmed',
+      designerLink: 'https://dribbble.com/shots/10837061-Marketing-FREE-XD',
+      tools: [{ name: 'HTML5', class: 'html' }, { name: 'CSS3', class: 'css' }, { name: 'JavaScript', class: 'javascript' }],
+      category: ['static']
+    }
+  ];
+
+  const filterTabs = ['All', 'Favorite', 'Full-Stack', 'Static'];
+  let activeFilter = 'All';
+
+  // --- Start of Animation Logic ---
+
+  // 1. Create variables to hold the tab button elements and the indicator's style
+  let tabElements = [];
+  let indicatorStyle = '';
+  let ready = false;
+
+  onMount(() => {
+    setTimeout(() => {
+        ready = true;
+        updateIndicator(activeFilter);
+    }, 50);
+  });
+
+  function updateIndicator(filter) {
+    const activeIndex = filterTabs.indexOf(filter);
+    const activeTabEl = tabElements[activeIndex];
+    if (activeTabEl) {
+      indicatorStyle = `
+        left: ${activeTabEl.offsetLeft}px;
+        width: ${activeTabEl.offsetWidth}px;
+      `;
+    }
+  }
+  
+  function handleFilterClick(filter) {
+    activeFilter = filter;
+    updateIndicator(filter);
+  }
+
+  // --- End of Animation Logic ---
+
+  $: filteredProjects = projects.filter(p => {
+    if (activeFilter === 'All') return true;
+    return p.category.includes(activeFilter.toLowerCase().replace('-', ' '));
+  });
+</script>
+
+<style>
 
 
-let footer= document.querySelector("footer") 
-let wrapper= document.querySelector(".wrapper")
-
-setTimeout(() => {
-   wrapper.style.display="block"
-},850)
-
-
-// ! Skills 
-const skillList = document.querySelectorAll(".skills > li")
-const hover = document.querySelector(".pointer")
-skillList.forEach((skill)=>{
-    skill.addEventListener("mouseover",()=>{
-        hover.style.display="none"
-    })
-})
-    //  hover.style.display="none"   
-
-
-//  function sendEmail (){
-//     console.log("it works")
-//     var params={
-//     from_name: document.getElementById("fullName").value,
-//     message: document.getElementById("message").value,
-//     email_id: document.getElementById("email").value
-//         }
-//         emailjs.send("service_e9dlam5","template_x6zsbs9",params).then(()=> alert("Send Successfully"))
-//     }
-const header= document.querySelector(".header-cont")    
-const navCont= document.querySelector(".nav-container")    
-const navUl= document.querySelector(".nav-container ul")    
-
- window.onscroll=(e)=>{
-if (window.scrollY>=100){
-    header.style.width= "26em" 
-    navCont.style.width= "8em" 
-    navUl.style.display= "none" 
-    
-} 
-else if(window.scrollY <=100){
-    header.style.width="85%";
-    navCont.style.width= "18em" 
-    navUl.style.display= "flex" 
-    
+.project .tools{
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.3rem;
 }
- if( window.scrollY <=100 && window.innerWidth >=720){
-    header.style.width="85%";
-    navCont.style.width= "32em" 
-    navUl.style.display= "flex" 
+.project .tools span {
+text-decoration: underline;
+text-underline-offset: .2rem;
+text-decoration-thickness: .2rem;
+padding: .5rem 1rem;
+border-radius: 100vw;
+}
+.project .tools .html{
+background-color: rgba(247, 147, 32, 0.85);
+}
+.project .tools .css{
+background-color: rgba(65, 183, 238,0.85);
+}
+.project .tools .javascript{
+background-color:rgba(231, 212, 60, 0.85);
+}
+.project .tools .tailwind{
+background-color:rgba(38, 230, 214, 0.85);
+}
+.project .tools .react{
+background-color:rgba(77, 219, 255, 0.85);
+}
+.project .tools .active{
+background-color:rgba(255, 77, 77, 0.85);
 }
 
+.tools span:hover{
+    opacity: .88;
+}
+
+.project:hover{
+    box-shadow: 0px 0px 2rem #70c6ff67;
+    transform:scale(101%);
+    transition: .2s all;
+}
+.project > *:not(a){
+    padding: 3rem;
+}
+.project img{
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    min-height: 26rem;
+    max-height: 26rem;
+}
+.project p{
+    font-size: var(--fs-100);
+
+}
+.project a{
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.project i {
+    font-size:var(--fs-500);
+    padding: 1rem  3rem 2rem ;
+    color: #eee241;
 }
 
 
-var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+  /* Styles for the filter tabs have been updated for the animation */
+  .filter-tabs {
+    position: relative; /* This is the anchor for the absolute indicator */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
 
-if (isSafari) {
-    window.alert("Currently Website is not working responsively on safari mobile ")
+  /* The new indicator element for the active tab background */
+  .active-tab-indicator {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 100vw;
+    box-shadow: 0 0 1rem var(--primary-color);
+    transition: all 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+    opacity: 0; 
+  }
+  .active-tab-indicator.ready {
+      opacity: 1;
+  }
+
+  .filter-tabs button {
+    position: relative; 
+    z-index: 1;
+    font-size: var(--fs-100);
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: var(--small-txt);
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .filter-tabs button:hover {
+    color: var(--txt-h-color);
+  }
+
+  .filter-tabs button.active {
+    color: white;
+  }
+
+#projects{
+    margin-top: 50px;
 }
-```
 
-## File: css/media.css
-```css
+#projects .projects-cont{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(340px, 1fr) );
+    gap: 2.4rem;
+}
+.project {
+    background-color: var(--secondary-color-2);
+    overflow: hidden;
+    border-radius: 1.7rem;
+}
+
+
+.project > *:not(a){
+    padding: 3rem;
+}
+
+
+.primary-header{
+    font-size: var(--fs-600);
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.secondary-header {
+    font-size: var(--fs-200);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 8rem ;
+    letter-spacing: 1px;
+    color:var(--small-txt) ;
+}
+
+</style>
+<section id="projects">
+  <span class="primary-header">Projects</span>
+  <p class="secondary-header">Here Is Some Of My Work</p>
+
+  <div class="filter-tabs">
+    <span class="active-tab-indicator" class:ready style={indicatorStyle}></span>
+
+    {#each filterTabs as tab, i}
+      <button 
+        class:active={activeFilter === tab}
+        on:click={() => handleFilterClick(tab)}
+        bind:this={tabElements[i]}
+      >
+        {tab}
+      </button>
+    {/each}
+  </div>
+
+  <div class="projects-cont">
+    {#each filteredProjects as project (project.title)}
+      <div class="project">
+        <a href={project.link} target="_blank" rel="noopener noreferrer">
+          <img src={project.imageUrl} alt="{project.title} Website" />
+        </a>
+        <p>
+          <a href={project.link} target="_blank" rel="noopener noreferrer">{project.title}</a>
+          {project.description}
+        </p>
+        <span>Designed by <a href={project.designerLink} target="_blank" rel="noopener noreferrer"><b>{project.designer}</b></a></span>
+        <div class="tools">
+          {#each project.tools as tool}
+            <span class={tool.class}>{tool.name}</span>
+          {/each}
+        </div>
+      </div>
+    {/each}
+  </div>
+</section>
+````
+
+## File: src/components/Testominial.svelte
+````
+<script>
+</script>
+
+<section id="testimonials">
+    <h3 class="primary-header">What Clients Say</h3>
+    <div class="testimonial">
+        <div><img src="/imgs/Eng-Ahmed-samy.png" alt="Client photo" /></div>
+        <div>
+            <p>
+                A very respectable and helpful person. This was our first collaboration, and it was very
+                productive. I will rely on him for my coming projects.
+            </p>
+            <div class="client-cont">
+                <span class="client">_Ahmed Beghet</span> From
+                <a
+                    class="freelance-website"
+                    href="https://mostaql.com/u/Ahmed_Dalton"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img src="/imgs/mostaql.png" alt="Mostaql" /><span>Mostaql</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Specific styles for the Testimonials section, copied from your style.css */
+    #testimonials {
+        margin-top: 5em;
+    }
+    .testimonial {
+        display: flex;
+        width: 80%;
+        margin: 5em auto;
+        background: var(--secondary-color-2); /* Defined in :root */
+        border-radius: 1em;
+        overflow: hidden;
+        align-items: center;
+    }
+    .testimonial img {
+        width: 12em;
+    }
+    .freelance-website {
+        align-items: center;
+        color: var(--secondary-color) !important; /* Defined in :root */
+        display: flex;
+    }
+    .freelance-website img {
+        margin: 0 0.5em;
+        width: 1.5em !important;
+    }
+    .client-cont {
+        margin-left: 1em;
+        margin-top: 1em;
+        display: flex;
+        gap: 0.3em;
+        align-items: center;
+    }
+    .testimonial p {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
+            Verdana, sans-serif;
+        font-size: var(--fs-200); /* Defined in :root */
+        font-weight: 500;
+        padding-left: 1em;
+        width: 40ch;
+        color: var(--txt-h-color); /* Defined in :root */
+    }
+    .testimonial span {
+        font-weight: 600;
+        color: var(--small-txt); /* Defined in :root */
+        display: inline-block;
+    }
+    .primary-header {
+        font-size: var(--fs-600); /* Defined in :root */
+        font-weight: 700;
+        letter-spacing: 1px;
+        display: block;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    /* Ensure global variables are accessible */
+    :global(:root) {
+        --primary-color: #4fc2f7e0;
+        --secondary-color: #18b3ded7;
+        --background-color: rgb(1, 10, 22);
+        --txt-h-color: #d3d9dd;
+        --small-txt: #bebebe;
+        --secondary-color-2: rgb(12, 22, 37);
+        --fs-200: 2.2rem;
+        --fs-600: 6.2rem;
+        /* Add other necessary :root variables if needed */
+    }
+</style>
+````
+
+## File: src/css/media.css
+````css
 @media (max-width:1300px) {
     :root{
         font-size: 50%;
@@ -350,377 +888,10 @@ width: 32ch ;
 
 
 }
-```
+````
 
-## File: index.html
-```html
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dalton</title>
-  <script src="script.js" type="text/javascript"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-  </script>
-  <script type="text/javascript">
-    (function () {
-      emailjs.init("sPfygCgnCHysm3zw6");
-    })();
-  </script>
-
-</head>
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/media.css" />
-<!-- ! Inter Font Family  -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="icon" href="imgs/Group 3 (1).svg" type="image/icon type">
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&family=Open+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Raleway:wght@200;300;400;500;600;700&family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
-  rel="stylesheet" />
-<!--! font awesome library  -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<body>
-  <div class="loading-s loading-sc">
-    <span class="loading-item"></span>
-  </div>
-  <div class="wrapper">
-    <!--! Header -->
-    <div class="header-cont">
-      <header class="container">
-        <span class="logo">
-          <img src="imgs/Group 3 (1).svg" alt="">
-        </span>
-        <div class="nav-container glass-f">
-          <span class="sudo light-on"></span>
-          <nav class="">
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#more">More</a></li>
-              <li><a href="#hire-me">Hire me</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="mode">
-          <span class="sudo light-on"></span>
-          <i class="fa-regular fa-lightbulb glass-f"></i>
-        </div>
-      </header>
-    </div>
-    <div class=" container">
-      <section id="about">
-        <div class="introduction">
-          <span class="hello">Hello,</span>
-          <h1>Dalton Is Here!</h1>
-          <h2>Frontend Developer</h2>
-          <p>
-            Hi, Iam <b> Ahmed Dalton</b> -Ahmed Eldalatony- iam a Freelancer
-            working as Frontend developer helping Unique startups <br />
-            and small projects to <span class="shine">Shine</span>.
-          </p>
-          <div class="btn-cont">
-            <span class="sudo light-on"></span>
-            <button class="btn glass-f">Get in touch</button>
-          </div>
-          <div class="skills-cont">
-            <div class="par">My Skills :</div>
-            <ul class="skills">
-              <li>
-                <ul>
-                  <span> HTML</span>
-                  <li>HTML5</li>
-                  <li>HTML semantic elements</li>
-                  <li>Accessability</li>
-                </ul>
-                <i class="fa-brands fa-html5"></i>
-              </li>
-              <li>
-                <ul>
-                  <span> CSS </span>
-                  <li>CSS3</li>
-                  <li>CSS Flex box and Grid</li>
-                  <li>Responsive design</li>
-                  <li>Complex Animations</li>
-                  <li>BEM Methodology</li>
-                  <li>
-                  </li>
-                </ul>
-                <i class="fa-brands fa-css3-alt"></i>
-              </li>
-              <li>
-                <ul>
-                  <span> JS & TS </span>
-                  <li>Dom manipulation</li>
-                  <li>AJAX (Dealing with APIs)</li>
-                  <li> TS Static Typing</li>
-                  <li>EcmaScript6</li>
-                </ul>
-                <i class="fa-brands fa-square-js">
-
-                </i>
-              </li>
-              <li>
-                <span class="pointer">Hover For More</span>
-                <ul>
-                  <span>React & Next.JS</span>
-                  <li>Functional Components & Hooks</li>
-                  <li>Class Components & Hooks</li>
-                  <li>SSR & CSR & SSG </li>
-                  <li>Context API</li>
-                  <li>Redux & RTk</li>
-                  <li>Recoil.JS</li>
-                </ul>
-                <img class="react-icon" src="imgs/React&Next.svg" alt="" />
-              </li>
-              <li>
-                <ul>
-                  <span>Component libraries </span>
-                  <li> Efficiency with Component-Based libraries </li>
-                  <li> MUI </li>
-                  <li> BootStrap </li>
-                </ul>
-                <img class="comp" src="imgs/Componet libraries.svg" alt="">
-              </li>
-              <li>
-                <ul>
-                  <span>Other CSS Libraries</span>
-                  <li>Tailwind</li>
-                  <li>Styled Components</li>
-                </ul>
-                <img class="comp" src="imgs/Other.svg" alt="">
-              </li>
-              <li>
-                <ul>
-                  <span>Firebase</span>
-                  <li>Firebase Auth</li>
-                  <li>Firebase Cloud</li>
-                  <li>Firebase Hosting</li>
-                </ul>
-                <img class="firebase" src="imgs/firebase-svgrepo-com.svg" alt="">
-              </li>
-
-            </ul>
-          </div>
-        </div>
-        <img class="my-photo" src="imgs/ahmed-dalton.png" alt="Ahmed-Dalton" />
-      </section>
-      <section id="projects">
-        <span class="primary-header">Projects</span>
-        <p class="secondary-header">Here Is Some Of My Work</p>
-        <div class="projects-cont">
-
-   <div class="project fav">
-            <a href="https://fmt-c.com/ar" target="_blank">
-              <img src="imgs/fmt-c.png" alt="fmt-c Website" />
-            </a>
-            <p>
-              <a href="https://fmt-c.com/ar" target="_blank">
-                FMT-C
-              </a>
-              is a project for buying properties and building Contractions company in the UAE
-            </p>
-            <span>Designed by
-              <a href="">Ahmed Dalton</a></span>
-
-            <div class="tools">
-              <span class="react">React JS </span>
-              <span class="tailwind">Tailwind </span>
-              <!-- <span class="active">Active</span> -->
-            </div>
-          </div>
-          <div class="project u_dev">
-            <a href="https://baddel.vercel.app/ar" target="_blank">
-              <img src="imgs/baddel.png" alt="baddel Website" />
-            </a>
-            <p>
-              <a href="https://baddel.vercel.app/ar" target="_blank">Baddel
-              </a>
-              Is a project containing a list of projects to the israeli boycotted products
-            </p>
-            <span>Designed by
-              <a href="https://almazbisenbaev.gumroad.com/">Ahmed Dalton</a></span>
-
-            <div class="tools">
-              <span class="react">React JS </span>
-              <span class="tailwind">Tailwind </span>
-              <!-- <span class="active">Active</span> -->
-            </div>
-          </div>
-<div class="project fav">
-            <a href="https://green-tree-intiative.netlify.app/" target="_blank">
-              <img src="imgs/Screenshot-2024-02-11-at-18-56-39-The-Green-Tree-Intetiative.png" alt="green-tree-intiative Website " />
-            </a>
-            <p>
-              <a href="https://green-tree-intiative.netlify.app/" target="_blank">
-                The Green tree Intiative
-              </a>
-              is a concept of a non-profit organization  that helps the people and the environment
-            </p>
-            <span>Designed by
-              <a href="#">Ahmed Dalton</a></span>
-
-            <div class="tools">
-              <span class="react">React JS </span>
-              <span class="tailwind">Tailwind </span>
-              <!-- <span class="active">Active</span> -->
-            </div>
-          </div>
-          <div class="project">
-            <a href="https://Bouncer.pages.dev/" target="_blank">
-              <img src="imgs/Bouncer.png" alt="Bouncer Website" />
-            </a>
-            <p>
-              <a href="https://Bouncer.pages.dev/" target="_blank">Bouncer
-              </a>
-              is an ECommerce Website created with React and Tailwind
-            </p>
-            <span>Designed by
-              <a href="https://almazbisenbaev.gumroad.com/"><b>Almaz Bisenbaev</b></a></span>
-
-            <div class="tools">
-              <span class="react">React JS </span>
-              <span class="tailwind">Tailwind </span>
-              <!-- <span class="active">Active</span> -->
-            </div>
-          </div>
-          <div class="project">
-            <a href="https://sky-host.pages.dev/" target="_blank">
-              <img src="imgs/Sky-Host.jpg" alt="Sky Host Website" />
-            </a>
-            <p>
-              <a href="https://sky-host.pages.dev/" target="_blank">Sky Host
-              </a>
-              is a hosting platform concept Created with html,css and
-              javaScript
-            </p>
-            <span>Designed by <b>EuroART93</b></span>
-            <div class="tools">
-              <span class="html">HTML5 </span>
-              <span class="css">CSS3 </span>
-              <span class="javascript">JavaScript </span>
-            </div>
-          </div>
-
-          <div class="project">
-            <a href="https://Khoomie.pages.dev/" target="_blank">
-              <img src="imgs/Khoomie.png" alt="Khoomie Website" />
-            </a>
-            <p>
-              <a href="https://Khoomie.pages.dev/" target="_blank">Khoomie
-              </a>
-              is an ECommerce Website concept created with html,css and
-              javaScript
-            </p>
-            <span>Designed by
-              <a href="https://dribbble.com/shots/15282101-Khoomi-Ecommerce-UI-Kit"><b>Michael Ajah </b></a></span>
-
-            <div class="tools">
-              <span class="html">HTML5 </span>
-              <span class="css">CSS3 </span>
-              <span class="javascript">JavaScript </span>
-            </div>
-          </div>
-          <div class="project">
-            <a href="https://marknet.pages.dev/" target="_blank">
-              <img src="imgs/Marknet.png" alt="Marknet Website" />
-            </a>
-            <p>
-              <a href="https://marknet.pages.dev/" target="_blank">Marknet
-              </a>
-              is a marketing Website concept created with html,css and
-              javaScript
-            </p>
-            <span>Designed by
-              <a href="https://dribbble.com/shots/10837061-Marketing-FREE-XD"><b>Adel Ahmed</b></a></span>
-
-            <div class="tools">
-              <span class="html">HTML5 </span>
-              <span class="css">CSS3 </span>
-              <span class="javascript">JavaScript </span>
-            </div>
-          </div>
-
-
-        </div>
-      </section>
-      <!-- <section id="more" >
-    <h3  class="primary-header" >More</h3>
-    <span class="txt-grad" >My Personal Blog Is Coming</span>
-</section> -->
-      <section id="testimonials">
-        <h3 class="primary-header">What Clients Say</h3>
-        <div class="testimonial">
-          <div>
-            <img src="imgs/Eng-Ahmed-samy.png" alt="client photo">
-          </div>
-          <div>
-            <p>A very respectable and helpful person, This is our first collaboration and it was very productive and I
-              will rely on him my coming projects. </p>
-            <div class="client-cont">
-              <span class="client">_Ahmed Beghet </span> From
-              <a class="freelance-website" href="https://mostaql.com/u/Ahmed_Dalton">
-                <img src="imgs/mostaql.png" alt="">
-                <span>Mostaql</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-      <section id="hire-me">
-        <span class="primary-header">Let's Talk </span>
-        <p class="secondary-header">Let me know how can i help you</p>
-        <form onsubmit="event.preventDefault()" action="">
-          <input class="glass-f" id="firstName" type="text" placeholder="First Name" />
-          <input class="glass-f" id="lastName" type="text" placeholder="Last Name" />
-          <input class="glass-f" id="email" type="mail" placeholder="Mail" />
-          <input class="glass-f" id="phone" type="number" placeholder="Phone" />
-          <input class="glass-f" id="message" type="text" placeholder="Message" />
-          <div class="btn-cont">
-            <span class="sudo light-on"></span>
-            <button onclick="sendEmail()" type="submit" class="btn glass-f">Get in touch</button>
-          </div>
-        </form>
-      </section>
-    </div>
-    <footer>
-      <div class="container">
-        <div class="work">
-          <div>Work with me on
-            <a href="https://mostaql.com/u/Ahmed_Dalton">
-              <img src="imgs/mostaql.png" alt="">
-              <span>Mostaql</span>
-            </a> And
-            <a href="www.upwork.com/freelancers/~01704c6f24e3cd7b79">
-              <img src="imgs/upwork-svgrepo-com.svg" alt="">
-              <span>UpWork</span>
-            </a>
-          </div>
-
-        </div>
-
-        <div>Designed and Developed by <b>Ahmed Dalton</b></div>
-      </div>
-    </footer>
-  </div>
-</body>
-<script src="main.js"></script>
-
-
-
-</html>
-```
-
-## File: css/style.css
-```css
+## File: src/css/style.css
+````css
 :root{
 /** Font Sizes  */
     
@@ -1402,4 +1573,408 @@ footer .work div img{
 footer img{
     width: 3rem;
 }
+````
+
+## File: src/lib/index.ts
+````typescript
+// place files you want to import through the `$lib` alias in this folder.
+````
+
+## File: src/routes/+layout.svelte
+````
+<script lang="ts">
+	import '../app.css';
+  import '../css/style.css';
+  import '../css/media.css';
+	import favicon from '$lib/assets/favicon.svg';
+	
+	let { children } = $props();
+</script>
+
+<svelte:head>
+	<link rel="icon" href={favicon} />
+</svelte:head>
+<div class="">
+{@render children?.()}
+</div>
+````
+
+## File: src/routes/+page.svelte
+````
+<script>
+  import { onMount } from 'svelte';
+  import Header from '../components/Header.svelte';     // <-- Import the new Header
+  import About from '../components/About.svelte';
+  import Testominial from '../components/Testominial.svelte';
+  import Projects from '../components/Projects.svelte';
+
+  // --- State managed by the main app ---
+  let isLoading = true;
+  let isLightOn = true;
+  let activeSection = ''; // Will hold the ID of the section in view
+
+  // Form input variables
+  let firstName = '';
+  let lastName = '';
+  let email = '';
+  let phone = '';
+  let message = '';
+  
+  // --- Section Observer Logic ---
+  let sectionElements = {}; // To hold the <section> DOM elements
+
+  onMount(() => {
+    // Hide loading screen
+    setTimeout(() => isLoading = false, 850);
+
+    // This observer watches the sections and updates `activeSection`
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeSection = entry.target.id;
+        }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px' }); // Triggers when section is in the middle of the screen
+
+    // Tell the observer which elements to watch
+    Object.values(sectionElements).forEach(el => {
+      if(el) observer.observe(el);
+    });
+
+    // EmailJS and Safari check logic remains here
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init("sPfygCgnCHysm3zw6");
+    }
+    const isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+    if (isSafari) {
+      window.alert("Please note: This website may not be fully responsive on Safari mobile.");
+    }
+  });
+
+  // --- Event Handlers ---
+  function handleToggleTheme() {
+    isLightOn = !isLightOn;
+  }
+
+  function sendEmail() {
+    if (typeof emailjs === 'undefined') {
+      alert("Email service is not available. Please try again later.");
+      return;
+    }
+    const params = { from_name: `${firstName} ${lastName}`, message, email_id: email, phone };
+    emailjs.send("service_e9dlam5", "template_x6zsbs9", params).then(() => {
+        alert("Message Sent Successfully!");
+        firstName = ''; lastName = ''; email = ''; phone = ''; message = '';
+      }, (error) => {
+        alert(`Failed to send message. Error: ${JSON.stringify(error)}`);
+      });
+  }
+
+  console.log("=======",isLightOn);
+</script>
+
+<svelte:head>
+  <title>Dalton</title>
+  <link rel="icon" href="/imgs/Group 3 (1).svg" type="image/icon type">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/media.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&family=Open+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Raleway:wght@200;300;400;500;600;700&family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet" />
+</svelte:head>
+
+{#if isLoading}
+  <div class="loading-sc">
+    <span class="loading-item"></span>
+  </div>
+{:else}
+  <div class="" style="display: block;">
+    <Header {isLightOn} {activeSection} on:toggleTheme={handleToggleTheme} />
+    
+    <div class="container">
+      <About />
+      <div bind:this={sectionElements.projects}>
+        <Projects />
+        <Testominial />
+      </div>
+      <section id="hire-me" bind:this={sectionElements.hire_me}>
+        <span class="primary-header">Let's Talk</span>
+        <p class="secondary-header">Let me know how I can help you</p>
+        <form on:submit|preventDefault={sendEmail}>
+          <input class="glass-f" type="text" placeholder="First Name" bind:value={firstName} required />
+          <input class="glass-f" type="text" placeholder="Last Name" bind:value={lastName} required />
+          <input class="glass-f" type="email" placeholder="Email" bind:value={email} required />
+          <input class="glass-f" type="tel" placeholder="Phone" bind:value={phone} />
+          <input class="glass-f" id="message" type="text" placeholder="Message" bind:value={message} required />
+          <div class="btn-cont">
+            <span class="sudo" class:light-on={isLightOn}></span>
+            <button type="submit" class="btn glass-f">Get in touch</button>
+          </div>
+        </form>
+      </section>
+    </div>
+    <footer>
+      </footer>
+  </div>
+{/if}
+````
+
+## File: src/app.css
+````css
+/* @import 'tailwindcss'; */
+/* @plugin '@tailwindcss/forms'; */
+/* @plugin '@tailwindcss/typography'; */
+/**/
+````
+
+## File: src/app.d.ts
+````typescript
+// See https://svelte.dev/docs/kit/types#app.d.ts
+// for information about these interfaces
+declare global {
+	namespace App {
+		// interface Error {}
+		// interface Locals {}
+		// interface PageData {}
+		// interface PageState {}
+		// interface Platform {}
+	}
+}
+
+export {};
+````
+
+## File: src/app.html
+````html
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+````
+
+## File: static/robots.txt
+````
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+````
+
+## File: .gitignore
+````
+node_modules
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+````
+
+## File: .npmrc
+````
+engine-strict=true
+````
+
+## File: .prettierignore
+````
+# Package Managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+bun.lockb
+
+# Miscellaneous
+/static/
+````
+
+## File: .prettierrc
+````
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"printWidth": 100,
+	"plugins": [
+		"prettier-plugin-svelte",
+		"prettier-plugin-tailwindcss"
+	],
+	"overrides": [
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		}
+	],
+	"tailwindStylesheet": "./src/app.css"
+}
+````
+
+## File: eslint.config.js
+````javascript
+import prettier from 'eslint-config-prettier';
+import { includeIgnoreFile } from '@eslint/compat';
+import js from '@eslint/js';
+import svelte from 'eslint-plugin-svelte';
+import globals from 'globals';
+import { fileURLToPath } from 'node:url';
+import ts from 'typescript-eslint';
+import svelteConfig from './svelte.config.js';
+
+const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
+
+export default ts.config(
+	includeIgnoreFile(gitignorePath),
+	js.configs.recommended,
+	...ts.configs.recommended,
+	...svelte.configs.recommended,
+	prettier,
+	...svelte.configs.prettier,
+	{
+		languageOptions: {
+			globals: { ...globals.browser, ...globals.node }
+		},
+		rules: { // typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
+		// see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+		"no-undef": 'off' }
+	},
+	{
+		files: [
+			'**/*.svelte',
+			'**/*.svelte.ts',
+			'**/*.svelte.js'
+		],
+		languageOptions: {
+			parserOptions: {
+				projectService: true,
+				extraFileExtensions: ['.svelte'],
+				parser: ts.parser,
+				svelteConfig
+			}
+		}
+	}
+);
+````
+
+## File: README.md
+````markdown
+# sv
+
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+
+## Creating a project
+
+If you're seeing this, you've probably already done this step. Congrats!
+
+```sh
+# create a new project in the current directory
+npx sv create
+
+# create a new project in my-app
+npx sv create my-app
 ```
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```sh
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```sh
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+````
+
+## File: svelte.config.js
+````javascript
+import adapter from '@sveltejs/adapter-cloudflare';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	// Consult https://svelte.dev/docs/kit/integrations
+	// for more information about preprocessors
+	preprocess: vitePreprocess(),
+	kit: { adapter: adapter() }
+};
+
+export default config;
+````
+
+## File: tsconfig.json
+````json
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"moduleResolution": "bundler"
+	}
+	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
+	// except $lib which is handled by https://svelte.dev/docs/kit/configuration#files
+	//
+	// If you want to overwrite includes/excludes, make sure to copy over the relevant includes/excludes
+	// from the referenced tsconfig.json - TypeScript does not merge them in
+}
+````
+
+## File: vite.config.ts
+````typescript
+import devtoolsJson from 'vite-plugin-devtools-json';
+import tailwindcss from '@tailwindcss/vite';
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	plugins: [
+		tailwindcss(),
+		sveltekit(),
+		devtoolsJson()
+	]
+});
+````

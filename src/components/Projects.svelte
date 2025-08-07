@@ -296,7 +296,7 @@ background-color:rgba(255, 77, 77, 0.85);
         </a>
         <p>
           <a href={project.link} target="_blank" rel="noopener noreferrer">{project.title}</a>
-          {project.description}
+                       {project.description}
         </p>
         <span>Designed by <a href={project.designerLink} target="_blank" rel="noopener noreferrer"><b>{project.designer}</b></a></span>
         <div class="tools">

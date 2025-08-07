@@ -39,7 +39,8 @@
 "src/components/strength-meter.tsx",
       "src/app/globals.css",
       "package.json",
-      "repomix.config.json"
+      "repomix.config.json",
+      "**.svg"
     ]
   },
   "security": {

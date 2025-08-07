@@ -23,6 +23,14 @@
   <img class="my-photo" src="/imgs/ahmed-dalton.png" alt="Ahmed-Dalton" />
 </section>
 
+<div class="skills-cont">
+  <p>Skills</p>
+  <img class="skill" src="/imgs/prisma.svg" alt="prisma" />
+  <img class="skill" src="/imgs/next-auth.svg" alt="next-auth" />
+  <img class="skill" src="/imgs/react.svg" alt="react" />
+  <img class="skill" src="/imgs/typescript.svg" alt="typescript" />
+</div>
+
 <style>
   :global(:root) {
     --primary-color: #4fc2f7e0;
@@ -54,7 +62,6 @@
   .introduction .hello {
     color: var(--primary-color);
     font-size: var(--fs-400);
-    margin-bottom: 0.5rem;
     display: inline-block;
   }
   .introduction h1,
@@ -69,12 +76,22 @@
   }
   .introduction p {
     line-height: 1.6;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     margin-bottom: 4rem;
     padding-right: 12rem;
     font-size: var(--fs-200);
     color: var(--small-txt);
   }
+
+  .skills-cont img {
+    transition: filter 0.3s ease;
+    width: auto;
+    height: 100px;
+  }
+  .skills-cont img:hover {
+    filter: none;
+  }
+
   /* ! Media Queries */
   @media (max-width: 720px) {
     #about {

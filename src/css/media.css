@@ -2,6 +2,9 @@
   :root {
     font-size: 50%;
   }
+  .header-cont {
+    width: 96%;
+  }
   .project img {
     width: 100%;
     object-fit: cover;

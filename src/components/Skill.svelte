@@ -45,12 +45,18 @@
   />
 
   {#if isHovered}
-    <div
-      class="tooltip"
-      style="top: {tooltipPosition.top}px; left: {tooltipPosition.left}px"
-    >
-      <h3 class="tooltip-title">{skill.title}</h3>
-      <ul class="tooltip-details">
+    <div class="skill-card">
+      <div class="card-head">
+        <img
+          class="skill-logo"
+          src={isHovered
+            ? `/imgs/${skill.name}-colored.svg`
+            : `/imgs/${skill.name}.svg`}
+          alt={skill.name}
+        />
+        <h3>{skill.title}</h3>
+      </div>
+      <ul class="skill-details">
         {#each skill.details as detail}
           <li>{detail}</li>
         {/each}
@@ -61,6 +67,7 @@
 
 <style>
   .skill-container {
+    margin: 8rem 0;
     position: relative;
     display: flex;
     justify-content: center;
@@ -69,83 +76,72 @@
 
   .skill-logo {
     height: 80px;
-    transition: transform 0.3s ease;
+    /* transition: transform 0.3s ease; */
     cursor: pointer;
   }
 
   .skill-logo:hover {
-    transform: translateY(-10px);
+    /* background-color: rgba(255, 255, 255, 0.7); */
   }
 
-  .tooltip {
-    position: fixed; /* <- IMPORTANT FIX */
-    background: rgba(25, 25, 35, 0.95);
-    border: 1px solid var(--primary-color);
-    border-radius: 8px;
-    padding: 1.2rem;
-    min-width: 200px;
+  .skill-card {
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    min-height: 15rem;
+    min-width: 15rem;
+  }
+  .skill-card:hover {
+    min-width: 30rem;
+    max-width: 40rem;
+    min-height: 30reh;
+    max-height: 40rem;
+    opacity: 1;
+  }
+  .skill-card .skill-logo {
+    animation: scale-up 0.4s ease-in-out forwards;
+  }
+
+  .skill-card {
+    padding: 3rem;
+    background-color: var(--background-color);
     z-index: 100;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    animation: fadeIn 0.3s ease-out;
-    transform: translateX(-50%); /* Horizontally center */
+    position: absolute;
+    left: -3rem;
+    top: -3rem;
+    box-shadow: 0 0px 8px var(--primary-color);
+    border-radius: 12px;
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 
-  .tooltip-title {
-    color: var(--primary-color);
-    margin: 0 0 0.8rem 0;
-    font-size: 1.4rem;
-    text-align: center;
-  }
-
-  .tooltip-details {
-    list-style-type: none;
+  .skill-details {
+    list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .tooltip-details li {
-    color: var(--txt-h-color);
-    padding: 0.3rem 0;
-    font-size: 0.95rem;
-    position: relative;
-    padding-left: 1rem;
+  .skill-details li {
+    margin-bottom: 6px;
+    line-height: 1.6;
   }
-
-  .tooltip-details li:before {
-    content: "•";
-    color: var(--secondary-color);
-    position: absolute;
-    left: 0;
-  }
-
-  @keyframes fadeIn {
+  @keyframes scale-up {
     from {
       opacity: 0;
-      transform: translate(-50%, 10px);
     }
-    to {
-      opacity: 1;
-      transform: translate(-50%, 0);
+    60% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1.2);
     }
   }
-
   @media (max-width: 720px) {
     .skill-logo {
       height: 60px;
-    }
-
-    .tooltip {
-      min-width: 160px;
-      padding: 1rem;
-    }
-
-    .tooltip-title {
-      font-size: 1.2rem;
-    }
-
-    .tooltip-details li {
-      font-size: 0.85rem;
     }
   }
 </style>

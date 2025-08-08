@@ -171,8 +171,7 @@ nav ul {
 
 /* animation */
 .header-cont {
-  /* width:70rem !important; */
-  width: 85%;
+  width: 90%;
   transition: all 350ms;
   margin: 0 auto;
   border-radius: 100vw;

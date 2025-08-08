@@ -136,7 +136,7 @@
       transform: scale(1.3);
     }
     100% {
-      transform: scale(1.2);
+      transform: scale(1.28);
     }
   }
   @media (max-width: 720px) {

@@ -262,9 +262,6 @@ header:hover .mode .light-on {
   font-weight: 700;
 }
 
-#projects {
-  margin-top: 50px;
-}
 .primary-header {
   font-size: var(--fs-600);
   font-weight: 700;
@@ -281,121 +278,7 @@ header:hover .mode .light-on {
   letter-spacing: 1px;
   color: var(--small-txt);
 }
-#projects .projects-cont {
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2.4rem;
-}
-.project {
-  background-color: var(--secondary-color-2);
-  overflow: hidden;
-  border-radius: 1.7rem;
-}
-.project .tools {
-  display: flex;
-  gap: 1.5rem;
-  padding: 1.3rem;
-}
-.project .tools span {
-  text-decoration: underline;
-  text-underline-offset: 0.2rem;
-  text-decoration-thickness: 0.2rem;
-  padding: 0.5rem 1rem;
-  border-radius: 100vw;
-}
-.project .tools .html {
-  background-color: rgba(247, 147, 32, 0.85);
-}
-.project .tools .css {
-  background-color: rgba(65, 183, 238, 0.85);
-}
-.project .tools .javascript {
-  background-color: rgba(231, 212, 60, 0.85);
-}
-.project .tools .tailwind {
-  background-color: rgba(38, 230, 214, 0.85);
-}
-.project .tools .react {
-  background-color: rgba(77, 219, 255, 0.85);
-}
-.project .tools .active {
-  background-color: rgba(255, 77, 77, 0.85);
-}
 
-.tools span:hover {
-  opacity: 0.88;
-}
-
-.project:hover {
-  box-shadow: 0px 0px 2rem #70c6ff67;
-  transform: scale(101%);
-  transition: 0.2s all;
-}
-.project > *:not(a) {
-  padding: 3rem;
-}
-.project img {
-  width: 100%;
-  object-fit: cover;
-  object-position: top;
-  min-height: 26rem;
-  max-height: 26rem;
-}
-.project p {
-  font-size: var(--fs-100);
-}
-.project a {
-  text-decoration: underline;
-  font-weight: 500;
-}
-
-.project i {
-  font-size: var(--fs-500);
-  padding: 1rem 3rem 2rem;
-  color: #eee241;
-}
-.skills-cont {
-  margin-top: 4rem;
-  display: flex;
-  align-items: center;
-  width: max-content;
-}
-
-.skills-cont .par {
-  margin-right: 3rem;
-  font-size: var(--fs-300);
-  display: block;
-}
-.skills-cont .skills {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-}
-.skills span {
-  font-size: var(--fs-200);
-  margin-bottom: 1rem;
-}
-
-.skills .pointer {
-  position: absolute;
-  width: max-content;
-  bottom: -70px;
-  right: 50%;
-  color: var(--small-txt);
-  transform: translateX(50%);
-}
-.skills .pointer::after {
-  content: "▲";
-  font-size: 1.5rem;
-  position: absolute;
-  top: -20px;
-  right: 50%;
-  transform: translateX(50%);
-  color: var(--small-txt);
-  animation: upDown 0.4s infinite;
-}
 @keyframes upDown {
   0% {
   }
@@ -453,9 +336,9 @@ header:hover .mode .light-on {
     max-height: 50rem;
   }
 }
-.project > *:not(a) {
-  padding: 3rem;
-}
+/* .project > *:not(a) { */
+/*   padding: 3rem; */
+/* } */
 
 #more {
   margin-top: 15rem;

@@ -1,5 +1,4 @@
-import { writable } from 'svelte/store';
-
+import { writable } from "svelte/store";
 export const themeStore = writable({
-  isLightOn: true
+  isLightOn: true,
 });

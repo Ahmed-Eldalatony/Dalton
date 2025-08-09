@@ -1,12 +1,14 @@
 <script>
+  import HeaderTitle from "./HeaderTitle.svelte";
   import { onMount } from "svelte";
 
   const projects = [
     {
       title: "FMT-C",
       imageUrl: "/imgs/fmt-c.png",
+      detailsLink: "/projects/fmt-c", // internal details page
+      github: null, // no github link
       link: "https://fmt-c.com/ar",
-      githubLink: "https://github.com/yourusername/fmt-c-project",
       description:
         "A project for a real estate and construction company in the UAE.",
       designer: "Ahmed Dalton",
@@ -15,12 +17,15 @@
         { name: "Next.js", class: "nextjs" },
         { name: "shadcn/ui", class: "shadcn" },
         { name: "Supabase", class: "supabase" },
+        { name: "Tailwind", class: "tailwind" },
       ],
       category: ["favorite", "full-stack"],
     },
     {
       title: "Baddel",
       imageUrl: "/imgs/baddel.png",
+      detailsLink: "/projects/baddel",
+      github: "https://github.com/username/baddel",
       link: "https://baddel.vercel.app/ar",
       description: "A project listing alternatives to boycotted products.",
       designer: "Ahmed Dalton",
@@ -35,6 +40,8 @@
       title: "The Green Tree Initiative",
       imageUrl:
         "/imgs/Screenshot-2024-02-11-at-18-56-39-The-Green-Tree-Intetiative.png",
+      detailsLink: "/projects/green-tree-initiative",
+      github: null,
       link: "https://green-tree-intiative.netlify.app/",
       description:
         "A concept for a non-profit helping people and the environment.",
@@ -49,6 +56,8 @@
     {
       title: "Bouncer",
       imageUrl: "/imgs/Bouncer.png",
+      detailsLink: "/projects/bouncer",
+      github: "https://github.com/username/bouncer",
       link: "https://Bouncer.pages.dev/",
       description: "An eCommerce Website created with React and Tailwind.",
       designer: "Almaz Bisenbaev",
@@ -62,6 +71,8 @@
     {
       title: "Sky Host",
       imageUrl: "/imgs/Sky-Host.jpg",
+      detailsLink: "/projects/sky-host",
+      github: null,
       link: "https://sky-host.pages.dev/",
       description:
         "A hosting platform concept created with HTML, CSS, and JavaScript.",
@@ -77,6 +88,8 @@
     {
       title: "Khoomie",
       imageUrl: "/imgs/Khoomie.png",
+      detailsLink: "/projects/khoomie",
+      github: null,
       link: "https://Khoomie.pages.dev/",
       description: "An eCommerce website concept.",
       designer: "Michael Ajah",
@@ -92,6 +105,8 @@
     {
       title: "Marknet",
       imageUrl: "/imgs/Marknet.png",
+      detailsLink: "/projects/marknet",
+      github: "https://github.com/username/marknet",
       link: "https://marknet.pages.dev/",
       description: "A marketing website concept.",
       designer: "Adel Ahmed",
@@ -108,9 +123,6 @@
   const filterTabs = ["All", "Favorite", "Full-Stack", "Static"];
   let activeFilter = "All";
 
-  // --- Start of Animation Logic ---
-
-  // 1. Create variables to hold the tab button elements and the indicator's style
   let tabElements = [];
   let indicatorStyle = "";
   let ready = false;
@@ -138,8 +150,6 @@
     updateIndicator(filter);
   }
 
-  // --- End of Animation Logic ---
-
   $: filteredProjects = projects.filter((p) => {
     if (activeFilter === "All") return true;
     return p.category.includes(activeFilter.toLowerCase().replace("-", " "));
@@ -147,13 +157,10 @@
 </script>
 
 <section id="projects">
-  <span class="primary-header">Projects</span>
-  <p class="secondary-header">Here Is Some Of My Work</p>
-
+  <HeaderTitle name="Projects" description="Here Is Some Of My Work" />
   <div class="filter-tabs">
     <span class="active-tab-indicator" class:ready style={indicatorStyle}
     ></span>
-
     {#each filterTabs as tab, i}
       <button
         class:active={activeFilter === tab}
@@ -168,39 +175,46 @@
   <div class="projects-cont">
     {#each filteredProjects as project (project.title)}
       <div class="project">
-        <a href={project.link} target="_blank" rel="noopener noreferrer">
-          <img src={project.imageUrl} alt="{project.title} Website" />
+        <a href={project.detailsLink}>
+          <img
+            class="project-img"
+            src={project.imageUrl}
+            alt="{project.title} Website"
+          />
         </a>
         <p>
-          <a href={project.link} target="_blank" rel="noopener noreferrer"
-            >{project.title}</a
-          >
+          <a href={project.detailsLink}>{project.title}</a>
+
           {project.description}
         </p>
-        <!-- <div class="project-links"> -->
-        <!--   <a -->
-        <!--     href="/projects/{project.title.toLowerCase().replace(/\s+/g, '-')}" -->
-        <!--     class="project-link" -->
-        <!--   > -->
-        <!--     Explore Project -->
-        <!--   </a> -->
-        <!--   <!-- Optional GitHub Link -->
-        <!--   {#if project.githubLink} -->
-        <!--     <a -->
-        <!--       href={project.githubLink} -->
-        <!--       target="_blank" -->
-        <!--       rel="noopener noreferrer" -->
-        <!--       class="project-link github-link" -->
-        <!--     > -->
-        <!--       GitHub Source -->
-        <!--     </a> -->
-        <!--   {/if} -->
-        <!-- </div> -->
-        <!-- End Links Container -->
+        <div class="project-links">
+          <a class="project-link" href={project.detailsLink}
+            >Case Study
+            <!-- <img class="sm-icon" src="/imgs/document.svg" alt="GitHub Logo" /> -->
+          </a>
+          {#if project.github}
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-link"
+            >
+              Repo
+              <!-- <img class="sm-icon" src="/imgs/github.svg" alt="GitHub Logo" /> -->
+            </a>
+          {/if}
+        </div>
         <div class="tools">
-          {#each project.tools as tool}
-            <span class={tool.class}>{tool.name}</span>
-          {/each}
+          {#if project.tools.length > 3}
+            {#each project.tools.slice(0, 3) as tool}
+              <span class={tool.class}>{tool.name}</span>
+            {/each}
+            <span class="extra-tools">+{project.tools.length - 3}</span>
+          {:else}
+            {#each project.tools as tool}
+              <span class={tool.class}>{tool.name}</span>
+            {/each}
+          {/if}
         </div>
       </div>
     {/each}
@@ -208,11 +222,14 @@
 </section>
 
 <style>
+  .project {
+    color: var(--text-md-color);
+  }
   .project .tools {
     display: flex;
     gap: 1.5rem;
-    padding: 0;
-    background-color: red;
+    padding: 1.3rem;
+    margin-left: 1.6rem;
   }
   .project .tools span {
     padding: 0.5rem 1rem;
@@ -236,22 +253,18 @@
   .project .tools .active {
     background-color: rgba(255, 77, 77, 0.65);
   }
-
   .project .tools .shadcn {
     background-color: rgba(156, 163, 175, 0.65);
     color: white;
   }
-
   .project .tools .nextjs {
     background-color: rgba(0, 0, 0, 0.65);
     color: white;
   }
-
   .project .tools .astro {
     background-color: rgba(138, 43, 226, 0.65);
     color: white;
   }
-
   .project .tools .supabase {
     background-color: rgba(64, 224, 208, 0.65);
     color: white;
@@ -260,17 +273,12 @@
   .tools span:hover {
     opacity: 0.88;
   }
-
   .project:hover {
     box-shadow: 0px 0px 2rem #70c6ff67;
     transform: scale(101%);
     transition: 0.2s all;
   }
-  .project > *:not(a):not(.project-links) {
-    /* Exclude links from padding */
-    padding: 3rem;
-  }
-  .project img {
+  .project-img {
     width: 100%;
     object-fit: cover;
     object-position: top;
@@ -279,50 +287,31 @@
   }
   .project p {
     font-size: var(--fs-100);
+    padding: 1rem 3rem;
   }
-  .project a:not(.project-link) {
-    /* Style only the title link */
-    font-weight: 400;
+  .project a {
     text-decoration: underline;
+    text-decoration-color: #74869e;
   }
 
-  /* --- New Styles for Project Links --- */
   .project-links {
     display: flex;
-    gap: 1rem; /* Space between links */
-    padding: 0 3rem 1.5rem 3rem; /* Match project card padding, adjust bottom */
-    margin-top: -1rem; /* Pull links closer to description if needed */
+    gap: 1rem;
+    padding-left: 2rem;
   }
-
   .project-link {
-    display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: var(
-      --primary-color
-    ); /* Use your primary color variable */
+    border-radius: 0.5rem;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: var(--fs-100);
-    font-weight: 500;
-    transition:
-      background-color 0.3s ease,
-      transform 0.2s ease;
+    gap: 0.5rem;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
   }
-
   .project-link:hover {
-    background-color: var(--txt-h-color); /* Use your hover color variable */
-    transform: translateY(-2px); /* Slight lift on hover */
+    opacity: 0.85;
   }
-
-  .github-link {
-    background-color: #333; /* GitHub black */
-  }
-
-  .github-link:hover {
-    background-color: #444; /* Slightly lighter on hover */
-  }
-  /* ------------------------------------ */
 
   .filter-tabs {
     position: relative;
@@ -331,7 +320,6 @@
     gap: 1rem;
     margin-bottom: 4rem;
   }
-
   .active-tab-indicator {
     position: absolute;
     top: 0;
@@ -345,7 +333,6 @@
   .active-tab-indicator.ready {
     opacity: 1;
   }
-
   .filter-tabs button {
     position: relative;
     z-index: 1;
@@ -358,11 +345,9 @@
     cursor: pointer;
     transition: color 0.3s;
   }
-
   .filter-tabs button:hover {
     color: var(--txt-h-color);
   }
-
   .filter-tabs button.active {
     color: white;
   }
@@ -370,7 +355,6 @@
   #projects {
     margin-top: 50px;
   }
-
   #projects .projects-cont {
     margin: 0 auto;
     display: grid;
@@ -391,7 +375,6 @@
     text-align: center;
     margin-bottom: 2rem;
   }
-
   .secondary-header {
     font-size: var(--fs-200);
     font-weight: 500;
@@ -399,5 +382,18 @@
     margin-bottom: 8rem;
     letter-spacing: 1px;
     color: var(--small-txt);
+  }
+  .sm-icon {
+    width: 3rem;
+  }
+
+  .extra-tools {
+    background: var(--secondary-color);
+    color: white;
+    font-size: 1rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>

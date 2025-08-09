@@ -18,8 +18,7 @@
   let phone = "";
   let message = "";
 
-  // --- Section Observer Logic ---
-  let sectionElements = {}; // To hold the <section> DOM elements
+  let sectionElements = {};
 
   onMount(() => {
     // Hide loading screen

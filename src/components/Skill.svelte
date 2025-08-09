@@ -3,7 +3,7 @@
 
   export let skill;
   let isHovered = false;
-  let skillElement; // Reference to the skill image element
+  let skillElement;
   let tooltipPosition = { top: 0, left: 0 }; // Tooltip position
 
   async function handleMouseEnter() {
@@ -67,7 +67,7 @@
 
 <style>
   .skill-container {
-    margin: 8rem 0;
+    margin: 4rem 0;
     position: relative;
     display: flex;
     justify-content: center;
@@ -76,12 +76,7 @@
 
   .skill-logo {
     height: 80px;
-    /* transition: transform 0.3s ease; */
     cursor: pointer;
-  }
-
-  .skill-logo:hover {
-    /* background-color: rgba(255, 255, 255, 0.7); */
   }
 
   .skill-card {
@@ -130,13 +125,13 @@
   }
   @keyframes scale-up {
     from {
-      opacity: 0;
+      transform: scale(1);
     }
     60% {
-      transform: scale(1.3);
+      transform: scale(1.2);
     }
     100% {
-      transform: scale(1.28);
+      transform: scale(1.18);
     }
   }
   @media (max-width: 720px) {

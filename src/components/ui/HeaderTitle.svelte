@@ -1,6 +1,6 @@
 <script>
   export let name;
-  export let description;
+  // export let description;
 </script>
 
 <span class="primary-header">{name}</span>
@@ -17,12 +17,12 @@
     margin-bottom: 4rem;
     color: var(--text-md-color);
   }
-  .secondary-header {
-    font-size: var(--fs-200);
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 8rem;
-    letter-spacing: 1px;
-    color: var(--small-txt);
-  }
+  /* .secondary-header { */
+  /*   font-size: var(--fs-200); */
+  /*   font-weight: 500; */
+  /*   text-align: center; */
+  /*   margin-bottom: 8rem; */
+  /*   letter-spacing: 1px; */
+  /*   color: var(--small-txt); */
+  /* } */
 </style>

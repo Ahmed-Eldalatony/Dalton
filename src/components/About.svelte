@@ -1,7 +1,16 @@
 <!-- About.svelte -->
 <script>
-  import { themeStore } from "$lib/stores";
+  import Button from "./ui/Button.svelte";
+  import { onMount } from "svelte";
   import Skill from "./Skill.svelte";
+
+  let isVisible = false;
+
+  onMount(() => {
+    setTimeout(() => {
+      isVisible = true;
+    }, 100);
+  });
 
   const skills = [
     {
@@ -117,12 +126,11 @@
   ];
 </script>
 
-<section id="about">
+<section id="about" class:visible={isVisible}>
   <div class="introduction">
     <span class="hello">Hello,</span>
     <h1>Dalton Is Here!</h1>
     <h2>Fullstack Developer</h2>
-
     <p>
       I'm <strong>Ahmed Dalton</strong>, a Full Stack Developer specializing in
       high-performance frontend applications with React and Next.js, Familiar
@@ -130,17 +138,16 @@
       always used for the job.
     </p>
 
-    <div class="btn-cont">
-      <span class="sudo" class:light-on={$themeStore.isLightOn}></span>
-      <button type="submit" class="btn glass-f">Get in touch</button>
-    </div>
+    <Button visible={isVisible} />
   </div>
-  <img class="my-photo" src="/imgs/ahmed-dalton.png" alt="Ahmed-Dalton" />
+  <div class="photo-container">
+    <img class="my-photo" src="/imgs/ahmed-dalton.png" alt="Ahmed-Dalton" />
+  </div>
 </section>
 
-<div class="skills-cont">
-  {#each skills as skill}
-    <Skill {skill} />
+<div class="skills-cont" class:visible={isVisible}>
+  {#each skills as skill, i}
+    <Skill {skill} style={`animation-delay: ${i * 0.05}s`} />
   {/each}
 </div>
 
@@ -159,31 +166,74 @@
   #about {
     margin-top: 10rem;
     display: flex;
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
+  }
+
+  #about.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #about .photo-container {
+    position: relative;
+    width: 30%;
+    aspect-ratio: 1/1;
+    align-self: center;
   }
 
   #about .my-photo {
-    width: 30%;
-    aspect-ratio: 1/1;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    align-self: center;
     border-radius: 50%;
-    border: solid;
+    border: 3px solid var(--primary-color);
+    z-index: 2;
+    position: relative;
+  }
+  #about .photo-container:hover .photo-border {
+    opacity: 0.9;
   }
 
   .introduction {
     width: 70%;
+    padding-right: 3rem;
   }
 
   .introduction .hello {
     color: var(--primary-color);
     font-size: var(--fs-400);
     display: inline-block;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition:
+      opacity 0.6s ease 0.2s,
+      transform 0.6s ease 0.2s;
+  }
+
+  #about.visible .introduction .hello {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .introduction h1,
   .introduction h2 {
     font-size: var(--fs-500);
     font-weight: 700;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition:
+      opacity 0.6s ease 0.3s,
+      transform 0.6s ease 0.3s;
+  }
+
+  #about.visible .introduction h1,
+  #about.visible .introduction h2 {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .introduction h2 {
@@ -198,6 +248,21 @@
     padding-right: 12rem;
     font-size: var(--fs-200);
     color: var(--small-txt);
+    opacity: 0;
+    transform: translateX(-20px);
+    transition:
+      opacity 0.6s ease 0.4s,
+      transform 0.6s ease 0.4s;
+  }
+
+  #about.visible .introduction p {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  #about.visible .btn-cont {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .skills-cont {
@@ -208,6 +273,16 @@
     gap: 3rem;
     width: 100%;
     margin: 5rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.8s ease 0.6s,
+      transform 0.8s ease 0.6s;
+  }
+
+  .skills-cont.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* ! Media Queries */
@@ -219,13 +294,14 @@
 
     .introduction {
       width: 100%;
+      padding-right: 0;
     }
 
     .introduction p {
       padding-right: 0;
     }
 
-    #about .my-photo {
+    #about .photo-container {
       width: 60%;
       margin-top: 2rem;
     }

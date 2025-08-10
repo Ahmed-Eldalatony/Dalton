@@ -1,6 +1,5 @@
 <script>
   import { tick } from "svelte";
-
   export let skill;
   let isHovered = false;
   let skillElement;
@@ -8,25 +7,11 @@
 
   async function handleMouseEnter() {
     isHovered = true;
-    await tick(); // Wait for tooltip DOM to appear
-    updateTooltipPosition();
+    await tick();
   }
 
   function handleMouseLeave() {
     isHovered = false;
-  }
-
-  function updateTooltipPosition() {
-    if (skillElement) {
-      const rect = skillElement.getBoundingClientRect();
-      const windowScrollY = window.scrollY;
-      const windowScrollX = window.scrollX;
-
-      tooltipPosition = {
-        top: rect.top + windowScrollY - 120, // Positioned above the image
-        left: rect.left + windowScrollX + rect.width / 2, // Horizontally centered
-      };
-    }
   }
 </script>
 
@@ -44,25 +29,22 @@
     alt={skill.name}
   />
 
-  {#if isHovered}
-    <div class="skill-card">
-      <div class="card-head">
-        <img
-          class="skill-logo"
-          src={isHovered
-            ? `/imgs/${skill.name}-colored.svg`
-            : `/imgs/${skill.name}.svg`}
-          alt={skill.name}
-        />
-        <h3>{skill.title}</h3>
-      </div>
-      <ul class="skill-details">
-        {#each skill.details as detail}
-          <li>{detail}</li>
-        {/each}
-      </ul>
+  <!-- Always render the card but control visibility with CSS -->
+  <div class="skill-card" class:visible={isHovered}>
+    <div class="card-head">
+      <img
+        class="skill-logo"
+        src={`/imgs/${skill.name}-colored.svg`}
+        alt={skill.name}
+      />
+      <h3>{skill.title}</h3>
     </div>
-  {/if}
+    <ul class="skill-details">
+      {#each skill.details as detail}
+        <li>{detail}</li>
+      {/each}
+    </ul>
+  </div>
 </div>
 
 <style>
@@ -77,66 +59,92 @@
   .skill-logo {
     height: 80px;
     cursor: pointer;
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+  }
+
+  .skill-container:hover .skill-logo {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
   }
 
   .skill-card {
     opacity: 0;
-    transition: all 0.4s ease-in-out;
+    isolation: isolate; /* Creates new stacking context */
+    visibility: hidden;
+    transform: scale(0.95) translateY(10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
     min-height: 15rem;
-    min-width: 15rem;
-  }
-  .skill-card:hover {
     min-width: 30rem;
-    max-width: 40rem;
-    min-height: 30reh;
-    max-height: 40rem;
-    opacity: 1;
-  }
-  .skill-card .skill-logo {
-    animation: scale-up 0.4s ease-in-out forwards;
-  }
-
-  .skill-card {
     padding: 3rem;
     background-color: var(--background-color);
-    z-index: 100;
     position: absolute;
     left: -3rem;
-    top: -3rem;
+    top: -2rem;
     box-shadow: 0 0px 8px var(--primary-color);
     border-radius: 12px;
+    pointer-events: none;
+    z-index: 1000;
   }
+
+  .skill-card.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+    pointer-events: auto; /* Re-enable mouse events when visible */
+  }
+
+  .skill-card .skill-logo {
+    height: 60px;
+    transition: transform 0.3s ease;
+  }
+
+  .skill-card.visible .skill-logo {
+    transform: scale(1.3);
+  }
+
   .card-head {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 3rem;
+    margin-bottom: 3rem;
   }
 
   .skill-details {
     list-style: none;
     padding: 0;
     margin: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.3s ease 0.1s,
+      transform 0.3s ease 0.1s;
+  }
+
+  .skill-card.visible .skill-details {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .skill-details li {
     margin-bottom: 6px;
     line-height: 1.6;
   }
-  @keyframes scale-up {
-    from {
-      transform: scale(1);
-    }
-    60% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1.18);
-    }
-  }
+
   @media (max-width: 720px) {
     .skill-logo {
       height: 60px;
+    }
+
+    .skill-card {
+      left: -2rem;
+      top: -2rem;
+      padding: 2rem;
+      min-width: 12rem;
     }
   }
 </style>

@@ -1,0 +1,116 @@
+export const projects = [
+  {
+    title: "FMT-C",
+    imageUrl: "/imgs/fmt-c.png",
+    detailsLink: "/projects/fmt-c", // internal details page
+    github: null, // no github link
+    link: "https://fmt-c.com/ar",
+    description:
+      "A project for a real estate and construction company in the UAE.",
+    designer: "Ahmed Dalton",
+    designerLink: "#about",
+    tools: [
+      { name: "Next.js", class: "nextjs" },
+      { name: "shadcn/ui", class: "shadcn" },
+      { name: "Supabase", class: "supabase" },
+      { name: "Tailwind", class: "tailwind" },
+    ],
+    category: ["favorite", "full-stack"],
+  },
+  {
+    title: "Baddel",
+    imageUrl: "/imgs/baddel.png",
+    detailsLink: "/projects/baddel",
+    github: "https://github.com/username/baddel",
+    link: "https://baddel.vercel.app/ar",
+    description: "A project listing alternatives to boycotted products.",
+    designer: "Ahmed Dalton",
+    designerLink: "#about",
+    tools: [
+      { name: "React JS", class: "react" },
+      { name: "Tailwind", class: "tailwind" },
+    ],
+    category: ["full-stack"],
+  },
+  {
+    title: "The Green Tree Initiative",
+    imageUrl:
+      "/imgs/Screenshot-2024-02-11-at-18-56-39-The-Green-Tree-Intetiative.png",
+    detailsLink: "/projects/green-tree-initiative",
+    github: null,
+    link: "https://green-tree-intiative.netlify.app/",
+    description:
+      "A concept for a non-profit helping people and the environment.",
+    designer: "Ahmed Dalton",
+    designerLink: "#about",
+    tools: [
+      { name: "Astro", class: "astro" },
+      { name: "Tailwind", class: "tailwind" },
+    ],
+    category: ["favorite", "full-stack"],
+  },
+  {
+    title: "Bouncer",
+    imageUrl: "/imgs/Bouncer.png",
+    detailsLink: "/projects/bouncer",
+    github: "https://github.com/username/bouncer",
+    link: "https://Bouncer.pages.dev/",
+    description: "An eCommerce Website created with React and Tailwind.",
+    designer: "Almaz Bisenbaev",
+    designerLink: "https://almazbisenbaev.gumroad.com/",
+    tools: [
+      { name: "React JS", class: "react" },
+      { name: "Tailwind", class: "tailwind" },
+    ],
+    category: ["full-stack"],
+  },
+  {
+    title: "Sky Host",
+    imageUrl: "/imgs/Sky-Host.jpg",
+    detailsLink: "/projects/sky-host",
+    github: null,
+    link: "https://sky-host.pages.dev/",
+    description:
+      "A hosting platform concept created with HTML, CSS, and JavaScript.",
+    designer: "EuroART93",
+    designerLink: "#",
+    tools: [
+      { name: "HTML5", class: "html" },
+      { name: "CSS3", class: "css" },
+      { name: "JavaScript", class: "javascript" },
+    ],
+    category: ["static"],
+  },
+  {
+    title: "Khoomie",
+    imageUrl: "/imgs/Khoomie.png",
+    detailsLink: "/projects/khoomie",
+    github: null,
+    link: "https://Khoomie.pages.dev/",
+    description: "An eCommerce website concept.",
+    designer: "Michael Ajah",
+    designerLink: "https://dribbble.com/shots/15282101-Khoomi-Ecommerce-UI-Kit",
+    tools: [
+      { name: "HTML5", class: "html" },
+      { name: "CSS3", class: "css" },
+      { name: "JavaScript", class: "javascript" },
+    ],
+    category: ["static"],
+  },
+  {
+    title: "Marknet",
+    imageUrl: "/imgs/Marknet.png",
+    detailsLink: "/projects/marknet",
+    github: "https://github.com/username/marknet",
+    link: "https://marknet.pages.dev/",
+    description: "A marketing website concept.",
+    designer: "Adel Ahmed",
+    designerLink: "https://dribbble.com/shots/10837061-Marketing-FREE-XD",
+    tools: [
+      { name: "HTML5", class: "html" },
+      { name: "CSS3", class: "css" },
+      { name: "JavaScript", class: "javascript" },
+    ],
+    category: ["static"],
+  },
+];

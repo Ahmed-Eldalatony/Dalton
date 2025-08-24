@@ -1,11 +1,11 @@
 <script>
   export let name;
-  // export let description;
+  export let description;
 </script>
 
 <span class="primary-header">{name}</span>
 
-<!-- <p class="secondary-header">{description}</p> -->
+<p class="secondary-header">{description}</p>
 
 <style>
   .primary-header {
@@ -14,15 +14,15 @@
     letter-spacing: 1px;
     display: block;
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     color: var(--text-md-color);
   }
-  /* .secondary-header { */
-  /*   font-size: var(--fs-200); */
-  /*   font-weight: 500; */
-  /*   text-align: center; */
-  /*   margin-bottom: 8rem; */
-  /*   letter-spacing: 1px; */
-  /*   color: var(--small-txt); */
-  /* } */
+  .secondary-header {
+    font-size: var(--fs-200);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 8rem;
+    letter-spacing: 1px;
+    color: var(--small-txt);
+  }
 </style>

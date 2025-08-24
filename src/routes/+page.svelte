@@ -119,8 +119,6 @@
   </div>
 {:else}
   <div class="" style="display: block;">
-    <Header {activeSection} />
-
     <div class="container">
       <About />
       <div bind:this={sectionElements.projects}>
@@ -173,6 +171,5 @@
         </form>
       </section>
     </div>
-    <footer></footer>
   </div>
 {/if}

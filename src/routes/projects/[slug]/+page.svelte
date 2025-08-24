@@ -38,7 +38,7 @@
     window.addEventListener("scroll", handleScroll);
 
     // Get 3 random projects excluding the current one
-    const otherProjects = projects.filter(p => p.title !== projectData.title);
+    const otherProjects = projects.filter((p) => p.title !== projectData.title);
     randomProjects = otherProjects.sort(() => 0.5 - Math.random()).slice(0, 3);
 
     // Cleanup
@@ -57,18 +57,27 @@
         block: "start",
       });
     }
-  };
+  }
 </script>
 
 <svelte:head>
   <title>{projectData.title} - Dalton Portfolio</title>
-  <link rel="icon" href="/imgs/Group 3 (1).svg" type="image/icon type">
+  <link rel="icon" href="/imgs/Group 3 (1).svg" type="image/icon type" />
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/media.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&family=Open+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Raleway:wght@200;300;400;500;600;700&family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&family=Open+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Raleway:wght@200;300;400;500;600;700&family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 </svelte:head>
 
 <!-- Loading Screen -->
@@ -78,52 +87,6 @@
   </div>
 {/if}
 
-<!-- Header -->
-<header style:transform={headerTransform}>
-  <nav>
-    <div class="logo">Portfolio</div>
-    <ul class="nav-links">
-      <li>
-        <a
-          on:click|preventDefault={() => scrollToSection(event, "#overview")}
-          href="#overview">Overview</a
-        >
-      </li>
-      <li>
-        <a
-          on:click|preventDefault={() => scrollToSection(event, "#tech-stack")}
-          href="#tech-stack">Tech Stack</a
-        >
-      </li>
-      <li>
-        <a
-          on:click|preventDefault={() =>
-            scrollToSection(event, "#tech-deep-dive")}
-          href="#tech-deep-dive">Tech Deep Dive</a
-        >
-      </li>
-      <li>
-        <a
-          on:click|preventDefault={() => scrollToSection(event, "#challenges")}
-          href="#challenges">Challenges</a
-        >
-      </li>
-      <li>
-        <a
-          on:click|preventDefault={() => scrollToSection(event, "#results")}
-          href="#results">Results</a
-        >
-      </li>
-      <li>
-        <a
-          on:click|preventDefault={() => scrollToSection(event, "#gallery")}
-          href="#gallery">Gallery</a
-        >
-      </li>
-    </ul>
-  </nav>
-</header>
-
 <!-- Main Content -->
 <main>
   <!-- Hero Section -->
@@ -131,11 +94,7 @@
     <h1 class="project-title">{projectData.title}</h1>
     <p class="project-subtitle">{projectData.description}</p>
     <div class="project-links">
-      <a
-        href={projectData.link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href={projectData.link} target="_blank" rel="noopener noreferrer">
         <i class="fas fa-external-link-alt"></i> Live Demo
       </a>
       {#if projectData.github}
@@ -186,19 +145,25 @@
           <h3 class="tech-detail-title">Development Approach</h3>
         </div>
         <div class="tech-detail-content">
-          <p>For this project, I implemented a modern development approach focusing on performance and user experience. The project was built using industry best practices and the latest technologies.</p>
+          <p>
+            For this project, I implemented a modern development approach
+            focusing on performance and user experience. The project was built
+            using industry best practices and the latest technologies.
+          </p>
           <div class="code-snippet">
-            <code>{`// Example implementation approach
+            <code
+              >{`// Example implementation approach
 const project = {
   architecture: "component-based",
   stateManagement: "context API",
   buildTool: "Vite",
   deployment: "CI/CD pipeline"
-};`}</code>
+};`}</code
+            >
           </div>
         </div>
       </div>
-      
+
       <div class="tech-detail-card">
         <div class="tech-detail-header">
           <div class="tech-icon">
@@ -207,7 +172,11 @@ const project = {
           <h3 class="tech-detail-title">Design Implementation</h3>
         </div>
         <div class="tech-detail-content">
-          <p>The design was carefully translated from Figma mockups to a responsive, accessible interface. Special attention was paid to ensure consistency across all devices and browsers.</p>
+          <p>
+            The design was carefully translated from Figma mockups to a
+            responsive, accessible interface. Special attention was paid to
+            ensure consistency across all devices and browsers.
+          </p>
         </div>
       </div>
     </div>
@@ -221,22 +190,30 @@ const project = {
         <div class="challenge-number">1</div>
         <div class="challenge-content">
           <h3 class="challenge-title">Performance Optimization</h3>
-          <p class="challenge-description">The initial build had performance issues with large image assets and complex animations.</p>
+          <p class="challenge-description">
+            The initial build had performance issues with large image assets and
+            complex animations.
+          </p>
           <div class="challenge-solution">
             <span class="solution-label">Solution:</span>
-            Implemented lazy loading for images, code splitting for JavaScript bundles, and optimized CSS animations.
+            Implemented lazy loading for images, code splitting for JavaScript bundles,
+            and optimized CSS animations.
           </div>
         </div>
       </div>
-      
+
       <div class="challenge-item">
         <div class="challenge-number">2</div>
         <div class="challenge-content">
           <h3 class="challenge-title">Cross-browser Compatibility</h3>
-          <p class="challenge-description">Ensuring consistent behavior across different browsers and devices was challenging.</p>
+          <p class="challenge-description">
+            Ensuring consistent behavior across different browsers and devices
+            was challenging.
+          </p>
           <div class="challenge-solution">
             <span class="solution-label">Solution:</span>
-            Used autoprefixer for CSS and thorough testing across major browsers with BrowserStack.
+            Used autoprefixer for CSS and thorough testing across major browsers
+            with BrowserStack.
           </div>
         </div>
       </div>
@@ -279,20 +256,6 @@ const project = {
     </div>
   </section>
 </main>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-content">
-    <p>&copy; 2023 Dalton Fullstack Developer. All rights reserved.</p>
-  </div>
-</footer>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-content">
-    <p>&copy; 2023 Dalton Fullstack Developer. All rights reserved.</p>
-  </div>
-</footer>
 
 <style>
   :root {
@@ -926,20 +889,6 @@ const project = {
     font-size: 0.85rem;
     color: var(--small-txt);
   }
-
-  /* Footer */
-  footer {
-    padding: 3rem 0;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 5rem;
-  }
-
-  .footer-content {
-    font-size: var(--fs-100);
-    color: var(--small-txt);
-  }
-
   /* Loading Animation */
   .loader {
     position: fixed;
